@@ -9,12 +9,16 @@
 /* Begin PBXBuildFile section */
 		026CFBD318D99D6400EEC3D2 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 026CFBD218D99D6400EEC3D2 /* Cocoa.framework */; };
 		026CFBDD18D99D6400EEC3D2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 026CFBDB18D99D6400EEC3D2 /* InfoPlist.strings */; };
-		026CFBE118D99D6400EEC3D2 /* AstroKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 026CFBE018D99D6400EEC3D2 /* AstroKit.m */; };
 		026CFBE818D99D6400EEC3D2 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 026CFBE718D99D6400EEC3D2 /* XCTest.framework */; };
 		026CFBE918D99D6400EEC3D2 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 026CFBD218D99D6400EEC3D2 /* Cocoa.framework */; };
 		026CFBEC18D99D6400EEC3D2 /* AstroKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 026CFBCF18D99D6400EEC3D2 /* AstroKit.framework */; };
 		026CFBF218D99D6400EEC3D2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 026CFBF018D99D6400EEC3D2 /* InfoPlist.strings */; };
 		026CFBF418D99D6400EEC3D2 /* AstroKitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 026CFBF318D99D6400EEC3D2 /* AstroKitTests.m */; };
+		026CFC0018DA13EE00EEC3D2 /* AKTimeFunctions.h in Headers */ = {isa = PBXBuildFile; fileRef = 026CFBFE18DA13EE00EEC3D2 /* AKTimeFunctions.h */; };
+		026CFC0118DA13EE00EEC3D2 /* AKTimeFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 026CFBFF18DA13EE00EEC3D2 /* AKTimeFunctions.m */; };
+		026CFC0518DA14E200EEC3D2 /* AKUtilFunctions.h in Headers */ = {isa = PBXBuildFile; fileRef = 026CFC0318DA14E200EEC3D2 /* AKUtilFunctions.h */; };
+		026CFC0618DA14E200EEC3D2 /* AKUtilFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 026CFC0418DA14E200EEC3D2 /* AKUtilFunctions.m */; };
+		026CFC0718DA2BAD00EEC3D2 /* AstroKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 026CFBDF18D99D6400EEC3D2 /* AstroKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,12 +41,15 @@
 		026CFBDC18D99D6400EEC3D2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		026CFBDE18D99D6400EEC3D2 /* AstroKit-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AstroKit-Prefix.pch"; sourceTree = "<group>"; };
 		026CFBDF18D99D6400EEC3D2 /* AstroKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AstroKit.h; sourceTree = "<group>"; };
-		026CFBE018D99D6400EEC3D2 /* AstroKit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AstroKit.m; sourceTree = "<group>"; };
 		026CFBE618D99D6400EEC3D2 /* AstroKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AstroKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		026CFBE718D99D6400EEC3D2 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		026CFBEF18D99D6400EEC3D2 /* AstroKitTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "AstroKitTests-Info.plist"; sourceTree = "<group>"; };
 		026CFBF118D99D6400EEC3D2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		026CFBF318D99D6400EEC3D2 /* AstroKitTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AstroKitTests.m; sourceTree = "<group>"; };
+		026CFBFE18DA13EE00EEC3D2 /* AKTimeFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AKTimeFunctions.h; sourceTree = "<group>"; };
+		026CFBFF18DA13EE00EEC3D2 /* AKTimeFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AKTimeFunctions.m; sourceTree = "<group>"; };
+		026CFC0318DA14E200EEC3D2 /* AKUtilFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AKUtilFunctions.h; sourceTree = "<group>"; };
+		026CFC0418DA14E200EEC3D2 /* AKUtilFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AKUtilFunctions.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,7 +117,8 @@
 			isa = PBXGroup;
 			children = (
 				026CFBDF18D99D6400EEC3D2 /* AstroKit.h */,
-				026CFBE018D99D6400EEC3D2 /* AstroKit.m */,
+				026CFBFD18DA13B300EEC3D2 /* Time */,
+				026CFC0218DA14A700EEC3D2 /* Utils */,
 				026CFBD918D99D6400EEC3D2 /* Supporting Files */,
 			);
 			path = AstroKit;
@@ -144,6 +152,24 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		026CFBFD18DA13B300EEC3D2 /* Time */ = {
+			isa = PBXGroup;
+			children = (
+				026CFBFE18DA13EE00EEC3D2 /* AKTimeFunctions.h */,
+				026CFBFF18DA13EE00EEC3D2 /* AKTimeFunctions.m */,
+			);
+			name = Time;
+			sourceTree = "<group>";
+		};
+		026CFC0218DA14A700EEC3D2 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				026CFC0318DA14E200EEC3D2 /* AKUtilFunctions.h */,
+				026CFC0418DA14E200EEC3D2 /* AKUtilFunctions.m */,
+			);
+			name = Utils;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -151,6 +177,9 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				026CFC0718DA2BAD00EEC3D2 /* AstroKit.h in Headers */,
+				026CFC0518DA14E200EEC3D2 /* AKUtilFunctions.h in Headers */,
+				026CFC0018DA13EE00EEC3D2 /* AKTimeFunctions.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -249,7 +278,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				026CFBE118D99D6400EEC3D2 /* AstroKit.m in Sources */,
+				026CFC0118DA13EE00EEC3D2 /* AKTimeFunctions.m in Sources */,
+				026CFC0618DA14E200EEC3D2 /* AKUtilFunctions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

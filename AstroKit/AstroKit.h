@@ -6,8 +6,10 @@
 //  Copyright (c) 2014 lapsedpacifist. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#ifndef __ASTROKIT__
+#define __ASTROKIT__
 
-@interface AstroKit : NSObject
+#import "AKTimeFunctions.h"
+#import "AKUtilFunctions.h"
 
-@end
+#endif

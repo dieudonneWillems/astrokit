@@ -6,8 +6,8 @@
 //  Copyright (c) 2014 lapsedpacifist. All rights reserved.
 //
 
-#import "AKTime.h"
+#import "AKTimeFunctions.h"
 
-@implementation AKTime
+@implementation AKTimeFunctions
 
 @end

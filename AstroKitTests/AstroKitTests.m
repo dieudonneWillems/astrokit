@@ -7,6 +7,7 @@
 //
 
 #import <XCTest/XCTest.h>
+#import <AstroKit/AstroKit.h>
 
 @interface AstroKitTests : XCTestCase
 
@@ -26,9 +27,33 @@
     [super tearDown];
 }
 
-- (void)testExample
+- (void) testNormalizeAngle
 {
-    XCTFail(@"No implementation for \"%s\"", __PRETTY_FUNCTION__);
+    double angle = 0.3212;
+    double nangle = AKNormalizeAngle(angle);
+    XCTAssertEqual(nangle, angle, @"Angle normalisation in radians did not result in correct value.");
+}
+
+- (void) testAngleConversion
+{
+    double angle = 12.3211;
+    double radangle = AKDegreesToRadians(angle);
+    double nangle = AKRadiansToDegrees(radangle);
+    double nradangle = AKDegreesToRadians(nangle);
+    XCTAssertEqual(angle, nangle, @"Conversion from degrees to radians to degrees did not result in correct value: %f != %f",angle,nangle);
+    XCTAssertEqual(radangle, nradangle, @"Conversion from radians to degrees to radians did not result in correct value: %f != %f",radangle,nradangle);
+    angle = -312.32402;
+    radangle = AKDegreesToRadians(angle);
+    nangle = AKRadiansToDegrees(radangle);
+    nradangle = AKDegreesToRadians(nangle);
+    XCTAssertEqual(angle, nangle, @"Conversion from degrees to radians to degrees did not result in correct value: %f != %f",angle,nangle);
+    XCTAssertEqual(radangle, nradangle, @"Conversion from radians to degrees to radians did not result in correct value: %f != %f",radangle,nradangle);
+    angle = -1312.32402;
+    radangle = AKDegreesToRadians(angle);
+    nangle = AKRadiansToDegrees(radangle);
+    nradangle = AKDegreesToRadians(nangle);
+    XCTAssertEqual(angle, nangle, @"Conversion from degrees to radians to degrees did not result in correct value: %f != %f",angle,nangle);
+    XCTAssertEqual(radangle, nradangle, @"Conversion from radians to degrees to radians did not result in correct value: %f != %f",radangle,nradangle);
 }
 
 @end

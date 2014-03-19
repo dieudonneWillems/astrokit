@@ -8,6 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
-@interface AKTime : NSObject
+typedef struct __time {
+    
+} AKTime;
+
+@interface AKTimeFunctions : NSObject
 
 @end

@@ -8,6 +8,26 @@
 
 #import "AKUtilFunctions.h"
 
-@implementation AKUtilFunctions
 
-@end
+double AKNormalizeAngle(double angle)
+{
+    NSInteger nrd = (NSInteger)(angle/(2*M_PI));
+    return angle-(nrd*2*M_PI);
+}
+
+double AKNormalizeAngleInDegrees(double angle)
+{
+    NSInteger nrd = (NSInteger)(angle/360.);
+    return angle-(nrd*360.);
+}
+
+double AKRadiansToDegrees(double angle)
+{
+    return angle/M_PI*180.;
+}
+
+double AKDegreesToRadians(double angle)
+{
+    return angle/180.*M_PI;
+}
+

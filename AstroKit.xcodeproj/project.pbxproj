@@ -1,0 +1,465 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		026CFBD318D99D6400EEC3D2 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 026CFBD218D99D6400EEC3D2 /* Cocoa.framework */; };
+		026CFBDD18D99D6400EEC3D2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 026CFBDB18D99D6400EEC3D2 /* InfoPlist.strings */; };
+		026CFBE118D99D6400EEC3D2 /* AstroKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 026CFBE018D99D6400EEC3D2 /* AstroKit.m */; };
+		026CFBE818D99D6400EEC3D2 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 026CFBE718D99D6400EEC3D2 /* XCTest.framework */; };
+		026CFBE918D99D6400EEC3D2 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 026CFBD218D99D6400EEC3D2 /* Cocoa.framework */; };
+		026CFBEC18D99D6400EEC3D2 /* AstroKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 026CFBCF18D99D6400EEC3D2 /* AstroKit.framework */; };
+		026CFBF218D99D6400EEC3D2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 026CFBF018D99D6400EEC3D2 /* InfoPlist.strings */; };
+		026CFBF418D99D6400EEC3D2 /* AstroKitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 026CFBF318D99D6400EEC3D2 /* AstroKitTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		026CFBEA18D99D6400EEC3D2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 026CFBC618D99D6400EEC3D2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 026CFBCE18D99D6400EEC3D2;
+			remoteInfo = AstroKit;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		026CFBCF18D99D6400EEC3D2 /* AstroKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AstroKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		026CFBD218D99D6400EEC3D2 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		026CFBD518D99D6400EEC3D2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		026CFBD618D99D6400EEC3D2 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		026CFBD718D99D6400EEC3D2 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		026CFBDA18D99D6400EEC3D2 /* AstroKit-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "AstroKit-Info.plist"; sourceTree = "<group>"; };
+		026CFBDC18D99D6400EEC3D2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		026CFBDE18D99D6400EEC3D2 /* AstroKit-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AstroKit-Prefix.pch"; sourceTree = "<group>"; };
+		026CFBDF18D99D6400EEC3D2 /* AstroKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AstroKit.h; sourceTree = "<group>"; };
+		026CFBE018D99D6400EEC3D2 /* AstroKit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AstroKit.m; sourceTree = "<group>"; };
+		026CFBE618D99D6400EEC3D2 /* AstroKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AstroKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		026CFBE718D99D6400EEC3D2 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		026CFBEF18D99D6400EEC3D2 /* AstroKitTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "AstroKitTests-Info.plist"; sourceTree = "<group>"; };
+		026CFBF118D99D6400EEC3D2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		026CFBF318D99D6400EEC3D2 /* AstroKitTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AstroKitTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		026CFBCB18D99D6400EEC3D2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				026CFBD318D99D6400EEC3D2 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		026CFBE318D99D6400EEC3D2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				026CFBE918D99D6400EEC3D2 /* Cocoa.framework in Frameworks */,
+				026CFBEC18D99D6400EEC3D2 /* AstroKit.framework in Frameworks */,
+				026CFBE818D99D6400EEC3D2 /* XCTest.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		026CFBC518D99D6400EEC3D2 = {
+			isa = PBXGroup;
+			children = (
+				026CFBD818D99D6400EEC3D2 /* AstroKit */,
+				026CFBED18D99D6400EEC3D2 /* AstroKitTests */,
+				026CFBD118D99D6400EEC3D2 /* Frameworks */,
+				026CFBD018D99D6400EEC3D2 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		026CFBD018D99D6400EEC3D2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				026CFBCF18D99D6400EEC3D2 /* AstroKit.framework */,
+				026CFBE618D99D6400EEC3D2 /* AstroKitTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		026CFBD118D99D6400EEC3D2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				026CFBD218D99D6400EEC3D2 /* Cocoa.framework */,
+				026CFBE718D99D6400EEC3D2 /* XCTest.framework */,
+				026CFBD418D99D6400EEC3D2 /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		026CFBD418D99D6400EEC3D2 /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				026CFBD518D99D6400EEC3D2 /* Foundation.framework */,
+				026CFBD618D99D6400EEC3D2 /* CoreData.framework */,
+				026CFBD718D99D6400EEC3D2 /* AppKit.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		026CFBD818D99D6400EEC3D2 /* AstroKit */ = {
+			isa = PBXGroup;
+			children = (
+				026CFBDF18D99D6400EEC3D2 /* AstroKit.h */,
+				026CFBE018D99D6400EEC3D2 /* AstroKit.m */,
+				026CFBD918D99D6400EEC3D2 /* Supporting Files */,
+			);
+			path = AstroKit;
+			sourceTree = "<group>";
+		};
+		026CFBD918D99D6400EEC3D2 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				026CFBDA18D99D6400EEC3D2 /* AstroKit-Info.plist */,
+				026CFBDB18D99D6400EEC3D2 /* InfoPlist.strings */,
+				026CFBDE18D99D6400EEC3D2 /* AstroKit-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		026CFBED18D99D6400EEC3D2 /* AstroKitTests */ = {
+			isa = PBXGroup;
+			children = (
+				026CFBF318D99D6400EEC3D2 /* AstroKitTests.m */,
+				026CFBEE18D99D6400EEC3D2 /* Supporting Files */,
+			);
+			path = AstroKitTests;
+			sourceTree = "<group>";
+		};
+		026CFBEE18D99D6400EEC3D2 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				026CFBEF18D99D6400EEC3D2 /* AstroKitTests-Info.plist */,
+				026CFBF018D99D6400EEC3D2 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		026CFBCC18D99D6400EEC3D2 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		026CFBCE18D99D6400EEC3D2 /* AstroKit */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 026CFBF718D99D6400EEC3D2 /* Build configuration list for PBXNativeTarget "AstroKit" */;
+			buildPhases = (
+				026CFBCA18D99D6400EEC3D2 /* Sources */,
+				026CFBCB18D99D6400EEC3D2 /* Frameworks */,
+				026CFBCC18D99D6400EEC3D2 /* Headers */,
+				026CFBCD18D99D6400EEC3D2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AstroKit;
+			productName = AstroKit;
+			productReference = 026CFBCF18D99D6400EEC3D2 /* AstroKit.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		026CFBE518D99D6400EEC3D2 /* AstroKitTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 026CFBFA18D99D6400EEC3D2 /* Build configuration list for PBXNativeTarget "AstroKitTests" */;
+			buildPhases = (
+				026CFBE218D99D6400EEC3D2 /* Sources */,
+				026CFBE318D99D6400EEC3D2 /* Frameworks */,
+				026CFBE418D99D6400EEC3D2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				026CFBEB18D99D6400EEC3D2 /* PBXTargetDependency */,
+			);
+			name = AstroKitTests;
+			productName = AstroKitTests;
+			productReference = 026CFBE618D99D6400EEC3D2 /* AstroKitTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		026CFBC618D99D6400EEC3D2 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = lapsedpacifist;
+				TargetAttributes = {
+					026CFBE518D99D6400EEC3D2 = {
+						TestTargetID = 026CFBCE18D99D6400EEC3D2;
+					};
+				};
+			};
+			buildConfigurationList = 026CFBC918D99D6400EEC3D2 /* Build configuration list for PBXProject "AstroKit" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 026CFBC518D99D6400EEC3D2;
+			productRefGroup = 026CFBD018D99D6400EEC3D2 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				026CFBCE18D99D6400EEC3D2 /* AstroKit */,
+				026CFBE518D99D6400EEC3D2 /* AstroKitTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		026CFBCD18D99D6400EEC3D2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				026CFBDD18D99D6400EEC3D2 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		026CFBE418D99D6400EEC3D2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				026CFBF218D99D6400EEC3D2 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		026CFBCA18D99D6400EEC3D2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				026CFBE118D99D6400EEC3D2 /* AstroKit.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		026CFBE218D99D6400EEC3D2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				026CFBF418D99D6400EEC3D2 /* AstroKitTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		026CFBEB18D99D6400EEC3D2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 026CFBCE18D99D6400EEC3D2 /* AstroKit */;
+			targetProxy = 026CFBEA18D99D6400EEC3D2 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		026CFBDB18D99D6400EEC3D2 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				026CFBDC18D99D6400EEC3D2 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		026CFBF018D99D6400EEC3D2 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				026CFBF118D99D6400EEC3D2 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		026CFBF518D99D6400EEC3D2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		026CFBF618D99D6400EEC3D2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		026CFBF818D99D6400EEC3D2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				FRAMEWORK_VERSION = A;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "AstroKit/AstroKit-Prefix.pch";
+				INFOPLIST_FILE = "AstroKit/AstroKit-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = framework;
+			};
+			name = Debug;
+		};
+		026CFBF918D99D6400EEC3D2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				FRAMEWORK_VERSION = A;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "AstroKit/AstroKit-Prefix.pch";
+				INFOPLIST_FILE = "AstroKit/AstroKit-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = framework;
+			};
+			name = Release;
+		};
+		026CFBFB18D99D6400EEC3D2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/AstroKit.framework/Versions/A/AstroKit";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "AstroKit/AstroKit-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "AstroKitTests/AstroKitTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		026CFBFC18D99D6400EEC3D2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/AstroKit.framework/Versions/A/AstroKit";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "AstroKit/AstroKit-Prefix.pch";
+				INFOPLIST_FILE = "AstroKitTests/AstroKitTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		026CFBC918D99D6400EEC3D2 /* Build configuration list for PBXProject "AstroKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				026CFBF518D99D6400EEC3D2 /* Debug */,
+				026CFBF618D99D6400EEC3D2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		026CFBF718D99D6400EEC3D2 /* Build configuration list for PBXNativeTarget "AstroKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				026CFBF818D99D6400EEC3D2 /* Debug */,
+				026CFBF918D99D6400EEC3D2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		026CFBFA18D99D6400EEC3D2 /* Build configuration list for PBXNativeTarget "AstroKitTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				026CFBFB18D99D6400EEC3D2 /* Debug */,
+				026CFBFC18D99D6400EEC3D2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 026CFBC618D99D6400EEC3D2 /* Project object */;
+}

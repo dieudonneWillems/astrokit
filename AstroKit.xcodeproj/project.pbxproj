@@ -19,6 +19,8 @@
 		026CFC0518DA14E200EEC3D2 /* AKUtilFunctions.h in Headers */ = {isa = PBXBuildFile; fileRef = 026CFC0318DA14E200EEC3D2 /* AKUtilFunctions.h */; };
 		026CFC0618DA14E200EEC3D2 /* AKUtilFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 026CFC0418DA14E200EEC3D2 /* AKUtilFunctions.m */; };
 		026CFC0718DA2BAD00EEC3D2 /* AstroKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 026CFBDF18D99D6400EEC3D2 /* AstroKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		026CFC0A18DA484200EEC3D2 /* NSDate+AKTimeAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 026CFC0818DA484200EEC3D2 /* NSDate+AKTimeAdditions.h */; };
+		026CFC0B18DA484200EEC3D2 /* NSDate+AKTimeAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 026CFC0918DA484200EEC3D2 /* NSDate+AKTimeAdditions.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +52,8 @@
 		026CFBFF18DA13EE00EEC3D2 /* AKTimeFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AKTimeFunctions.m; sourceTree = "<group>"; };
 		026CFC0318DA14E200EEC3D2 /* AKUtilFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AKUtilFunctions.h; sourceTree = "<group>"; };
 		026CFC0418DA14E200EEC3D2 /* AKUtilFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AKUtilFunctions.m; sourceTree = "<group>"; };
+		026CFC0818DA484200EEC3D2 /* NSDate+AKTimeAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+AKTimeAdditions.h"; sourceTree = "<group>"; };
+		026CFC0918DA484200EEC3D2 /* NSDate+AKTimeAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+AKTimeAdditions.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,6 +161,8 @@
 			children = (
 				026CFBFE18DA13EE00EEC3D2 /* AKTimeFunctions.h */,
 				026CFBFF18DA13EE00EEC3D2 /* AKTimeFunctions.m */,
+				026CFC0818DA484200EEC3D2 /* NSDate+AKTimeAdditions.h */,
+				026CFC0918DA484200EEC3D2 /* NSDate+AKTimeAdditions.m */,
 			);
 			name = Time;
 			sourceTree = "<group>";
@@ -179,6 +185,7 @@
 			files = (
 				026CFC0718DA2BAD00EEC3D2 /* AstroKit.h in Headers */,
 				026CFC0518DA14E200EEC3D2 /* AKUtilFunctions.h in Headers */,
+				026CFC0A18DA484200EEC3D2 /* NSDate+AKTimeAdditions.h in Headers */,
 				026CFC0018DA13EE00EEC3D2 /* AKTimeFunctions.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -280,6 +287,7 @@
 			files = (
 				026CFC0118DA13EE00EEC3D2 /* AKTimeFunctions.m in Sources */,
 				026CFC0618DA14E200EEC3D2 /* AKUtilFunctions.m in Sources */,
+				026CFC0B18DA484200EEC3D2 /* NSDate+AKTimeAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -480,6 +488,7 @@
 				026CFBF918D99D6400EEC3D2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		026CFBFA18D99D6400EEC3D2 /* Build configuration list for PBXNativeTarget "AstroKitTests" */ = {
 			isa = XCConfigurationList;
@@ -488,6 +497,7 @@
 				026CFBFC18D99D6400EEC3D2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

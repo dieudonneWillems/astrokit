@@ -47,6 +47,11 @@
     XCTAssertEqual(njd, 2447187.5, @"January 27, 1988, 0h UT");
     nti = AKJulianDayToTimeIntervalSince1970(njd);
     XCTAssertTrue(fabs(dti-nti)<0.00001, @"Conversion back to time interval. diff = %f",dti-nti);
+    NSDate *jddate = [[NSDate alloc] initWithJulianDay:njd];
+    AKJulianDay ndjd = [jddate julianDay];
+    XCTAssertEqual(njd, ndjd, @"NSDate object initialised with JD for January 27, 1988, 0h UT");
+    ndjd = [date julianDay];
+    XCTAssertEqual(njd, ndjd, @"NSDate object initialised with JD for January 27, 1988, 0h UT");
 }
 
 - (void) testNormalizeAngle

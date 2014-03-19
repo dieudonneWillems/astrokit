@@ -39,4 +39,28 @@ double AKRadiansToDegrees(double angle);
  */
 double AKDegreesToRadians(double angle);
 
+/**
+ * Returns the difference in radians between the first and second
+ * angle. If the second angle is within [0,+PI] radians from the first
+ * angle, the difference will be positive, if the second angle is within
+ * (-PI,0) from the first, the result will be negative. The angles are
+ * normalised before calculating the difference.
+ * @param angle1 The first angle in radians.
+ * @param angle2 The second angle in radians.
+ * @return The angular difference between the two angles (-PI,PI].
+ */
+double AKAngularDifference(double angle1, double angle2);
+
+/**
+ * Returns the difference in degrees between the first and second
+ * angle. If the second angle is within [0,180] degrees from the first
+ * angle, the difference will be positive, if the second angle is within
+ * (-180,0) from the first, the result will be negative. The angles are
+ * normalised before calculating the difference.
+ * @param angle1 The first angle in degrees.
+ * @param angle2 The second angle in degrees.
+ * @return The angular difference between the two angles (-180,180].
+ */
+double AKAngularDifferenceInDegrees(double angle1, double angle2);
+
 #endif

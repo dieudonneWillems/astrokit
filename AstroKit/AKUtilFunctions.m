@@ -33,3 +33,23 @@ double AKDegreesToRadians(double angle)
     return angle/180.*M_PI;
 }
 
+double AKAngularDifference(double angle1, double angle2)
+{
+    double a1 = AKNormalizeAngle(angle1);
+    double a2 = AKNormalizeAngle(angle2);
+    double dif = a2-a1;
+    if(dif<=-M_PI) dif+=2*M_PI;
+    if(dif>M_PI) dif-=2*M_PI;
+    return dif;
+}
+
+double AKAngularDifferenceInDegrees(double angle1, double angle2)
+{
+    double a1 = AKNormalizeAngleInDegrees(angle1);
+    double a2 = AKNormalizeAngleInDegrees(angle2);
+    double dif = a2-a1;
+    if(dif<=-180) dif+=360;
+    if(dif>180) dif-=360;
+    return dif;
+}
+

@@ -55,6 +55,46 @@
     XCTAssertEqual(nangle, 287, @"Angle normalisation in radians did not result in correct value.");
 }
 
+- (void) testAngleDifference
+{
+    double angle1 = 0.5*M_PI;
+    double angle2 = M_PI;
+    double adif = AKAngularDifference(angle1, angle2);
+    XCTAssertEqual(adif, 0.5*M_PI, @"Angular difference in radians");
+    angle1 = 0.5*M_PI;
+    angle2 = -M_PI;
+    adif = AKAngularDifference(angle1, angle2);
+    XCTAssertEqual(adif, 0.5*M_PI, @"Angular difference in radians");
+    angle1 = -0.5*M_PI;
+    angle2 = -M_PI;
+    adif = AKAngularDifference(angle1, angle2);
+    XCTAssertEqual(adif, -0.5*M_PI, @"Angular difference in radians");
+    angle1 = -2.5*M_PI;
+    angle2 = -M_PI;
+    adif = AKAngularDifference(angle1, angle2);
+    XCTAssertEqual(adif, -0.5*M_PI, @"Angular difference in radians");
+    angle1 = 45;
+    angle2 = 50;
+    adif = AKAngularDifferenceInDegrees(angle1, angle2);
+    XCTAssertEqual(adif, 5, @"Angular difference in degrees");
+    angle1 = 55;
+    angle2 = 50;
+    adif = AKAngularDifferenceInDegrees(angle1, angle2);
+    XCTAssertEqual(adif, -5, @"Angular difference in degrees");
+    angle1 = 365;
+    angle2 = 5;
+    adif = AKAngularDifferenceInDegrees(angle1, angle2);
+    XCTAssertEqual(adif, 0, @"Angular difference in degrees");
+    angle1 = 365;
+    angle2 = -5;
+    adif = AKAngularDifferenceInDegrees(angle1, angle2);
+    XCTAssertEqual(adif, -10, @"Angular difference in degrees");
+    angle1 = 365;
+    angle2 = -365;
+    adif = AKAngularDifferenceInDegrees(angle1, angle2);
+    XCTAssertEqual(adif, -10, @"Angular difference in degrees");
+}
+
 - (void) testAngleConversion
 {
     double angle = 12.3211;

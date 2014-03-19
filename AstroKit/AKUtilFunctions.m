@@ -12,12 +12,14 @@
 double AKNormalizeAngle(double angle)
 {
     NSInteger nrd = (NSInteger)(angle/(2*M_PI));
+    if(angle<0) nrd = nrd-1;
     return angle-(nrd*2*M_PI);
 }
 
 double AKNormalizeAngleInDegrees(double angle)
 {
     NSInteger nrd = (NSInteger)(angle/360.);
+    if(angle<0) nrd = nrd-1;
     return angle-(nrd*360.);
 }
 

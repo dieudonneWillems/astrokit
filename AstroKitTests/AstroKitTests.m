@@ -32,6 +32,27 @@
     double angle = 0.3212;
     double nangle = AKNormalizeAngle(angle);
     XCTAssertEqual(nangle, angle, @"Angle normalisation in radians did not result in correct value.");
+    angle = -0.3212;
+    nangle = AKNormalizeAngle(angle);
+    XCTAssertEqual(nangle, angle+2*M_PI, @"Angle normalisation in radians did not result in correct value.");
+    angle = -0.3212-2*M_PI;
+    nangle = AKNormalizeAngle(angle);
+    XCTAssertEqual(nangle, angle+4*M_PI, @"Angle normalisation in radians did not result in correct value.");
+    angle = 1.3212+6*M_PI;
+    nangle = AKNormalizeAngle(angle);
+    XCTAssertEqual(nangle, angle-6*M_PI, @"Angle normalisation in radians did not result in correct value.");
+    angle = 90;
+    nangle = AKNormalizeAngleInDegrees(angle);
+    XCTAssertEqual(nangle, angle, @"Angle normalisation in radians did not result in correct value.");
+    angle = -90;
+    nangle = AKNormalizeAngleInDegrees(angle);
+    XCTAssertEqual(nangle, 270, @"Angle normalisation in radians did not result in correct value.");
+    angle = -450;
+    nangle = AKNormalizeAngleInDegrees(angle);
+    XCTAssertEqual(nangle, 270, @"Angle normalisation in radians did not result in correct value.");
+    angle = 2087;
+    nangle = AKNormalizeAngleInDegrees(angle);
+    XCTAssertEqual(nangle, 287, @"Angle normalisation in radians did not result in correct value.");
 }
 
 - (void) testAngleConversion

@@ -14,13 +14,16 @@
 		026CFBEC18D99D6400EEC3D2 /* AstroKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 026CFBCF18D99D6400EEC3D2 /* AstroKit.framework */; };
 		026CFBF218D99D6400EEC3D2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 026CFBF018D99D6400EEC3D2 /* InfoPlist.strings */; };
 		026CFBF418D99D6400EEC3D2 /* AstroKitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 026CFBF318D99D6400EEC3D2 /* AstroKitTests.m */; };
-		026CFC0018DA13EE00EEC3D2 /* AKTimeFunctions.h in Headers */ = {isa = PBXBuildFile; fileRef = 026CFBFE18DA13EE00EEC3D2 /* AKTimeFunctions.h */; };
+		026CFC0018DA13EE00EEC3D2 /* AKTimeFunctions.h in Headers */ = {isa = PBXBuildFile; fileRef = 026CFBFE18DA13EE00EEC3D2 /* AKTimeFunctions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		026CFC0118DA13EE00EEC3D2 /* AKTimeFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 026CFBFF18DA13EE00EEC3D2 /* AKTimeFunctions.m */; };
-		026CFC0518DA14E200EEC3D2 /* AKUtilFunctions.h in Headers */ = {isa = PBXBuildFile; fileRef = 026CFC0318DA14E200EEC3D2 /* AKUtilFunctions.h */; };
+		026CFC0518DA14E200EEC3D2 /* AKUtilFunctions.h in Headers */ = {isa = PBXBuildFile; fileRef = 026CFC0318DA14E200EEC3D2 /* AKUtilFunctions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		026CFC0618DA14E200EEC3D2 /* AKUtilFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 026CFC0418DA14E200EEC3D2 /* AKUtilFunctions.m */; };
 		026CFC0718DA2BAD00EEC3D2 /* AstroKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 026CFBDF18D99D6400EEC3D2 /* AstroKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		026CFC0A18DA484200EEC3D2 /* NSDate+AKTimeAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 026CFC0818DA484200EEC3D2 /* NSDate+AKTimeAdditions.h */; };
+		026CFC0A18DA484200EEC3D2 /* NSDate+AKTimeAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 026CFC0818DA484200EEC3D2 /* NSDate+AKTimeAdditions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		026CFC0B18DA484200EEC3D2 /* NSDate+AKTimeAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 026CFC0918DA484200EEC3D2 /* NSDate+AKTimeAdditions.m */; };
+		026CFC0E18DB915500EEC3D2 /* AKLeapSeconds.h in Headers */ = {isa = PBXBuildFile; fileRef = 026CFC0C18DB915500EEC3D2 /* AKLeapSeconds.h */; };
+		026CFC0F18DB915500EEC3D2 /* AKLeapSeconds.m in Sources */ = {isa = PBXBuildFile; fileRef = 026CFC0D18DB915500EEC3D2 /* AKLeapSeconds.m */; };
+		026CFC1118DB93B200EEC3D2 /* leapSeconds.dat in Resources */ = {isa = PBXBuildFile; fileRef = 026CFC1018DB93B200EEC3D2 /* leapSeconds.dat */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +57,9 @@
 		026CFC0418DA14E200EEC3D2 /* AKUtilFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AKUtilFunctions.m; sourceTree = "<group>"; };
 		026CFC0818DA484200EEC3D2 /* NSDate+AKTimeAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+AKTimeAdditions.h"; sourceTree = "<group>"; };
 		026CFC0918DA484200EEC3D2 /* NSDate+AKTimeAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+AKTimeAdditions.m"; sourceTree = "<group>"; };
+		026CFC0C18DB915500EEC3D2 /* AKLeapSeconds.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AKLeapSeconds.h; sourceTree = "<group>"; };
+		026CFC0D18DB915500EEC3D2 /* AKLeapSeconds.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AKLeapSeconds.m; sourceTree = "<group>"; };
+		026CFC1018DB93B200EEC3D2 /* leapSeconds.dat */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = leapSeconds.dat; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,6 +140,7 @@
 				026CFBDA18D99D6400EEC3D2 /* AstroKit-Info.plist */,
 				026CFBDB18D99D6400EEC3D2 /* InfoPlist.strings */,
 				026CFBDE18D99D6400EEC3D2 /* AstroKit-Prefix.pch */,
+				026CFC1018DB93B200EEC3D2 /* leapSeconds.dat */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -163,6 +170,8 @@
 				026CFBFF18DA13EE00EEC3D2 /* AKTimeFunctions.m */,
 				026CFC0818DA484200EEC3D2 /* NSDate+AKTimeAdditions.h */,
 				026CFC0918DA484200EEC3D2 /* NSDate+AKTimeAdditions.m */,
+				026CFC0C18DB915500EEC3D2 /* AKLeapSeconds.h */,
+				026CFC0D18DB915500EEC3D2 /* AKLeapSeconds.m */,
 			);
 			name = Time;
 			sourceTree = "<group>";
@@ -187,6 +196,7 @@
 				026CFC0518DA14E200EEC3D2 /* AKUtilFunctions.h in Headers */,
 				026CFC0A18DA484200EEC3D2 /* NSDate+AKTimeAdditions.h in Headers */,
 				026CFC0018DA13EE00EEC3D2 /* AKTimeFunctions.h in Headers */,
+				026CFC0E18DB915500EEC3D2 /* AKLeapSeconds.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -267,6 +277,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				026CFBDD18D99D6400EEC3D2 /* InfoPlist.strings in Resources */,
+				026CFC1118DB93B200EEC3D2 /* leapSeconds.dat in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -288,6 +299,7 @@
 				026CFC0118DA13EE00EEC3D2 /* AKTimeFunctions.m in Sources */,
 				026CFC0618DA14E200EEC3D2 /* AKUtilFunctions.m in Sources */,
 				026CFC0B18DA484200EEC3D2 /* NSDate+AKTimeAdditions.m in Sources */,
+				026CFC0F18DB915500EEC3D2 /* AKLeapSeconds.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -28,4 +28,34 @@ AKJulianDay AKTimeIntervalSince1970ToJulianDay(NSTimeInterval time);
  */
 NSTimeInterval AKJulianDayToTimeIntervalSince1970(AKJulianDay JD);
 
+
+/**
+ * Converts terrestrial (dynamic) time (TT or TDT) to atomic time (TAI).
+ * @param TT The time interval since 1970 in terrestrial time.
+ * @return The time interval since 1970 in atomic time (TAI).
+ */
+NSTimeInterval AKTerrestrialTimeToAtomicTime(NSTimeInterval TT);
+
+/**
+ * Converts atomic time (TAI) to terrestrial (dynamic) time (TT or TDT).
+ * @param TAI The time interval since 1970 in atomic time (TAI).
+ * @return The time interval since 1970 in terrestrial time.
+ */
+NSTimeInterval AKAtomicTimeToTerrestrialTime(NSTimeInterval TAI);
+
+/**
+ * Converts coordinated universal time (UTC) to atomic time (TAI).
+ * @param UTC The time interval since 1970 in coordinated universal time.
+ * @return The time interval since 1970 in atomic time (TAI).
+ */
+NSTimeInterval AKCoordinatedUniversalTimeToAtomicTime(NSTimeInterval UTC);
+
+/**
+ * Converts atomic time (TAI) to coordinated universal time (UCT).
+ * @param TAI The time interval since 1970 in atomic time (TAI).
+ * @return The time interval since 1970 in coordinated universal time.
+ */
+NSTimeInterval AKAtomicTimeToCoordinatedUniversalTime(NSTimeInterval TAI);
+
+
 #endif

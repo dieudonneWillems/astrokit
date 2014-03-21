@@ -13,6 +13,7 @@
 
 
 typedef double AKJulianDay;
+typedef double AKModifiedJulianDay;
 
 /**
  * Converts a time interval since January 1, 1970 00:00 UT to its corresponding Julian Day.
@@ -28,6 +29,33 @@ AKJulianDay AKTimeIntervalSince1970ToJulianDay(NSTimeInterval time);
  */
 NSTimeInterval AKJulianDayToTimeIntervalSince1970(AKJulianDay JD);
 
+/**
+ * Converts a time interval since January 1, 1970 00:00 UT to its corresponding Julian Day.
+ * @param time The time interval (in seconds) since 1 January 1970 0h UT.
+ * @return The Julian Day.
+ */
+AKModifiedJulianDay AKTimeIntervalSince1970ToModifiedJulianDay(NSTimeInterval time);
+
+/**
+ * Converts a Julian Day to its corresponding time interval since January 1, 1970 00:00 UT.
+ * @param JD The Julian Day.
+ * @return The time interval (in seconds) since 1 January 1970 0h UT.
+ */
+NSTimeInterval AKModifiedJulianDayToTimeIntervalSince1970(AKModifiedJulianDay JD);
+
+/**
+ * Converts the Julian Day number to Modified Julian Day number.
+ * @param JD The Julian Day number (JD).
+ * @return The Modified Julian Day number (MJD).
+ */
+AKModifiedJulianDay AKJulianDayToModifiedJulianDay(AKJulianDay JD);
+
+/**
+ * Converts the Julian Day number to Modified Julian Day number.
+ * @param JD The Julian Day number (JD).
+ * @return The Modified Julian Day number (MJD).
+ */
+AKJulianDay AKModifiedJulianDayToJulianDay(AKModifiedJulianDay MJD);
 
 /**
  * Converts terrestrial (dynamic) time (TT or TDT) to atomic time (TAI).
@@ -57,5 +85,14 @@ NSTimeInterval AKCoordinatedUniversalTimeToAtomicTime(NSTimeInterval UTC);
  */
 NSTimeInterval AKAtomicTimeToCoordinatedUniversalTime(NSTimeInterval TAI);
 
+
+/**
+ * Determines the time interval TAI-UTC between atomic time (TAI) and 
+ * universal coordinated time at the specified time (in number of seconds
+ * since 1970, Jan 1.
+ * @param time The timeinterval since 1970.
+ * @return The time difference TAI-UTC.
+ */
+NSTimeInterval AKDifferenceBetweenCoordiantedUniversalTimeAndAtomicTimeAtTimeIntervalSince1970(NSTimeInterval time);
 
 #endif

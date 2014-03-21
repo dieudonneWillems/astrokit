@@ -10,6 +10,15 @@
 #import "AKTimeFunctions.h"
 
 @interface AKLeapSeconds : NSObject
+{
+    AKModifiedJulianDay MJD;
+    double seconds;
+}
+
+@property (readonly) AKModifiedJulianDay MJD;
+@property (readonly) double seconds;
 
 + (double) leapSecondsAtJulianDay:(AKJulianDay)JD;
+
+- (id) initWithModifiedJulianDay:(AKModifiedJulianDay)ModJD numberOfLeapSeconds:(double)leapSeconds;
 @end

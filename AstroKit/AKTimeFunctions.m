@@ -69,6 +69,18 @@ NSTimeInterval AKAtomicTimeToCoordinatedUniversalTime(NSTimeInterval TAI)
     return UTC;
 }
 
+NSTimeInterval AKGeocentricCoordinateTimeToTerrestrialTime(NSTimeInterval TCG)
+{
+    AKJulianDay JD = AKTimeIntervalSince1970ToJulianDay(TCG);
+    return TCG-(6.969291e-10*(JD -2443144.5)*86400.);
+}
+
+NSTimeInterval AKTerrestrialTimeToGeocentricCoordinateTime(NSTimeInterval TT)
+{
+    AKJulianDay JD = AKTimeIntervalSince1970ToJulianDay(TT);
+    return TT+6.969291e-10*(JD -2443144.5)*86400.;
+}
+
 NSTimeInterval AKDifferenceBetweenCoordiantedUniversalTimeAndAtomicTimeAtTimeIntervalSince1970(NSTimeInterval time)
 {
     AKJulianDay JD = AKTimeIntervalSince1970ToJulianDay(time);

@@ -15,10 +15,108 @@
     return [[NSDate alloc] initWithJulianDay:JD];
 }
 
++ (instancetype) dateWithJulianDayCoordinatedUniversalTime:(AKJulianDay)JD
+{
+    return [[NSDate alloc] initWithJulianDayCoordinateUniversalTime:JD];
+}
+
++ (instancetype) dateWithJulianDayAtomicTime:(AKJulianDay)JD
+{
+    return [[NSDate alloc] initWithJulianDayAtomicTime:JD];
+}
+
++ (instancetype) dateWithJulianDayTerrestrialTime:(AKJulianDay)JD
+{
+    return [[NSDate alloc] initWithJulianDayTerrestrialTime:JD];
+}
+
++ (instancetype) dateWithJulianDayGeocentricCoordinateTime:(AKJulianDay)JD
+{
+    return [[NSDate alloc] initWithJulianDayGeocentricCoordinateTime:JD];
+}
+
++ (instancetype) dateWithTimeIntervalSince1970CoordinatedUniversalTime:(NSTimeInterval)UTC
+{
+    return [NSDate dateWithTimeIntervalSince1970:UTC];
+}
+
++ (instancetype) dateWithTimeIntervalSince1970AtomicTime:(NSTimeInterval)TAI
+{
+    NSTimeInterval UTC = AKAtomicTimeToCoordinatedUniversalTime(TAI);
+    return [NSDate dateWithTimeIntervalSince1970:UTC];
+}
+
++ (instancetype) dateWithTimeIntervalSince1970TerrestrialTime:(NSTimeInterval)TT
+{
+    NSTimeInterval TAI = AKTerrestrialTimeToAtomicTime(TT);
+    return [NSDate dateWithTimeIntervalSince1970AtomicTime:TAI];
+}
+
++ (instancetype) dateWithTimeIntervalSince1970GeocentricCoordinateTime:(NSTimeInterval)TCG
+{
+    NSTimeInterval TT = AKGeocentricCoordinateTimeToTerrestrialTime(TCG);
+    return [NSDate dateWithTimeIntervalSince1970TerrestrialTime:TT];
+}
+
 - (instancetype) initWithJulianDay:(AKJulianDay)JD
 {
     NSTimeInterval ti = AKJulianDayToTimeIntervalSince1970(JD);
     self = [self initWithTimeIntervalSince1970:ti];
+    return self;
+}
+
+- (instancetype) initWithJulianDayCoordinateUniversalTime:(AKJulianDay)JD
+{
+    NSTimeInterval UTC = AKJulianDayToTimeIntervalSince1970(JD);
+    self = [self initWithTimeIntervalSince1970CoordinatedUniversalTime:UTC];
+    return self;
+}
+
+- (instancetype) initWithJulianDayAtomicTime:(AKJulianDay)JD
+{
+    NSTimeInterval TAI = AKJulianDayToTimeIntervalSince1970(JD);
+    self = [self initWithTimeIntervalSince1970AtomicTime:TAI];
+    return self;
+}
+
+- (instancetype) initWithJulianDayTerrestrialTime:(AKJulianDay)JD
+{
+    NSTimeInterval TT = AKJulianDayToTimeIntervalSince1970(JD);
+    self = [self initWithTimeIntervalSince1970TerrestrialTime:TT];
+    return self;
+}
+
+- (instancetype) initWithJulianDayGeocentricCoordinateTime:(AKJulianDay)JD
+{
+    NSTimeInterval TCG = AKJulianDayToTimeIntervalSince1970(JD);
+    self = [self initWithTimeIntervalSince1970GeocentricCoordinateTime:TCG];
+    return self;
+}
+
+- (instancetype) initWithTimeIntervalSince1970CoordinatedUniversalTime:(NSTimeInterval)UTC
+{
+    self = [self initWithTimeIntervalSince1970:UTC];
+    return self;
+}
+
+- (instancetype) initWithTimeIntervalSince1970AtomicTime:(NSTimeInterval)TAI
+{
+    NSTimeInterval UTC = AKAtomicTimeToCoordinatedUniversalTime(TAI);
+    self = [self initWithTimeIntervalSince1970CoordinatedUniversalTime:UTC];
+    return self;
+}
+
+- (instancetype) initWithTimeIntervalSince1970TerrestrialTime:(NSTimeInterval)TT
+{
+    NSTimeInterval TAI = AKTerrestrialTimeToAtomicTime(TT);
+    self = [self initWithTimeIntervalSince1970AtomicTime:TAI];
+    return self;
+}
+
+- (instancetype) initWithTimeIntervalSince1970GeocentricCoordinateTime:(NSTimeInterval)TCG
+{
+    NSTimeInterval TT = AKGeocentricCoordinateTimeToTerrestrialTime(TCG);
+    self = [self initWithTimeIntervalSince1970TerrestrialTime:TT];
     return self;
 }
 
@@ -27,4 +125,51 @@
     return AKTimeIntervalSince1970ToJulianDay([self timeIntervalSince1970]);
 }
 
+- (AKJulianDay) julianDayCoordinatedUniversalTime
+{
+    return AKTimeIntervalSince1970ToJulianDay([self timeIntervalSince1970CoordinatedUniversalTime]);
+}
+
+- (AKJulianDay) julianDayAtomicTime
+{
+    return AKTimeIntervalSince1970ToJulianDay([self timeIntervalSince1970AtomicTime]);
+}
+
+- (AKJulianDay) julianDayTerrestrialTime
+{
+    return AKTimeIntervalSince1970ToJulianDay([self timeIntervalSince1970TerrestrialTime]);
+}
+
+- (AKJulianDay) julianDayGeocentricCoordinateTime
+{
+    return AKTimeIntervalSince1970ToJulianDay([self timeIntervalSince1970GeocentricCoordinateTime]);
+}
+
+- (AKModifiedJulianDay) modifiedJulianDay
+{
+    return AKTimeIntervalSince1970ToModifiedJulianDay([self timeIntervalSince1970]);
+}
+
+- (NSTimeInterval) timeIntervalSince1970CoordinatedUniversalTime
+{
+    return [self timeIntervalSince1970];
+}
+
+- (NSTimeInterval) timeIntervalSince1970AtomicTime
+{
+    NSTimeInterval UTC = [self timeIntervalSince1970];
+    return AKCoordinatedUniversalTimeToAtomicTime(UTC);
+}
+
+- (NSTimeInterval) timeIntervalSince1970TerrestrialTime
+{
+    NSTimeInterval TAI = [self timeIntervalSince1970AtomicTime];
+    return AKAtomicTimeToTerrestrialTime(TAI);
+}
+
+- (NSTimeInterval) timeIntervalSince1970GeocentricCoordinateTime
+{
+    NSTimeInterval TT = [self timeIntervalSince1970TerrestrialTime];
+    return AKTerrestrialTimeToGeocentricCoordinateTime(TT);
+}
 @end

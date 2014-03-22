@@ -85,6 +85,22 @@ NSTimeInterval AKCoordinatedUniversalTimeToAtomicTime(NSTimeInterval UTC);
  */
 NSTimeInterval AKAtomicTimeToCoordinatedUniversalTime(NSTimeInterval TAI);
 
+/**
+ * Converts geocentric coordinate time (TCG) to terrestrial time (TT).
+ * @param TCG The time interval since 1970 in geocentric coordinate
+ * time (TCG).e
+ * @return The time interval since 1970 terrestrial time (TT).
+ */
+NSTimeInterval AKGeocentricCoordinateTimeToTerrestrialTime(NSTimeInterval TCG);
+
+/**
+ * Converts terrestrial time (TT) to geocentric coordinate time (TCG).
+ * @param TT The time interval since 1970 in terrestrial time.
+ * @return The time interval since 1970 in geocentric coordinate time
+ * (TCG).
+ */
+NSTimeInterval AKTerrestrialTimeToGeocentricCoordinateTime(NSTimeInterval TT);
+
 
 /**
  * Determines the time interval TAI-UTC between atomic time (TAI) and 

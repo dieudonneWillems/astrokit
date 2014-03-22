@@ -27,6 +27,54 @@
     [super tearDown];
 }
 
+- (void) testTimeConversions
+{
+    NSDate *date = [NSDate dateWithString:@"2014-03-21 19:26:24 +0000"];
+    NSTimeInterval utc = [date timeIntervalSince1970];
+    XCTAssertEqual(AKDifferenceBetweenCoordiantedUniversalTimeAndAtomicTimeAtTimeIntervalSince1970(utc), 35., @"TAI-UTC in March 2014");
+    NSTimeInterval tai = AKCoordinatedUniversalTimeToAtomicTime(utc);
+    NSDate *dateTAI = [NSDate dateWithTimeIntervalSince1970:tai];
+    NSLog(@"TAI: %@",dateTAI);
+    date = [NSDate dateWithString:@"1976-03-21 19:26:24 +0000"];
+    utc = [date timeIntervalSince1970];
+    XCTAssertEqual(AKDifferenceBetweenCoordiantedUniversalTimeAndAtomicTimeAtTimeIntervalSince1970(utc), 16., @"TAI-UTC in March 2014");
+    date = [NSDate dateWithString:@"1982-11-21 19:26:24 +0000"];
+    utc = [date timeIntervalSince1970];
+    XCTAssertEqual(AKDifferenceBetweenCoordiantedUniversalTimeAndAtomicTimeAtTimeIntervalSince1970(utc), 22., @"TAI-UTC in March 2014");
+    
+    NSTimeInterval tt = [date timeIntervalSince1970TerrestrialTime];
+    NSTimeInterval tcg = AKTerrestrialTimeToGeocentricCoordinateTime(tt);
+    NSTimeInterval tt2 = AKGeocentricCoordinateTimeToTerrestrialTime(tcg);
+    XCTAssertEqual(tt, tt2, @"Conversion from TT to TCG and back.");
+}
+
+- (void) testJulianDayConversion
+{
+    double jd = 2440587.500000;
+    double ti = AKJulianDayToTimeIntervalSince1970(jd);
+    XCTAssertEqual(ti, 0.0, @"Conversion from Julian day to time interval did not result in correct value.");
+    double njd = AKTimeIntervalSince1970ToJulianDay(ti);
+    XCTAssertEqual(jd, njd, @"Conversion from time interval to julian day did not result in correct value.");
+    NSDate *date = [NSDate dateWithString:@"1957-10-04 19:26:24 +0000"];
+    NSTimeInterval dti = [date timeIntervalSince1970];
+    njd = AKTimeIntervalSince1970ToJulianDay(dti);
+    NSLog(@"Launch of Sputnik date = %@  ti=%f  JD=%f",date,dti,njd);
+    XCTAssertEqual(njd, 2436116.31, @"Launch of Sputnik");
+    NSTimeInterval nti = AKJulianDayToTimeIntervalSince1970(njd);
+    XCTAssertTrue(fabs(dti-nti)<0.00001, @"Conversion back to time interval. diff = %f",dti-nti);
+    date = [NSDate dateWithString:@"1988-01-27 00:00:00 +0000"];
+    dti = [date timeIntervalSince1970];
+    njd = AKTimeIntervalSince1970ToJulianDay(dti);
+    XCTAssertEqual(njd, 2447187.5, @"January 27, 1988, 0h UT");
+    nti = AKJulianDayToTimeIntervalSince1970(njd);
+    XCTAssertTrue(fabs(dti-nti)<0.00001, @"Conversion back to time interval. diff = %f",dti-nti);
+    NSDate *jddate = [[NSDate alloc] initWithJulianDay:njd];
+    AKJulianDay ndjd = [jddate julianDay];
+    XCTAssertEqual(njd, ndjd, @"NSDate object initialised with JD for January 27, 1988, 0h UT");
+    ndjd = [date julianDay];
+    XCTAssertEqual(njd, ndjd, @"NSDate object initialised with JD for January 27, 1988, 0h UT");
+}
+
 - (void) testNormalizeAngle
 {
     double angle = 0.3212;

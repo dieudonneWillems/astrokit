@@ -9,7 +9,9 @@
 #ifndef __ASTROKIT__
 #define __ASTROKIT__
 
-#import "AKTimeFunctions.h"
 #import "AKUtilFunctions.h"
+
+#import "AKTimeFunctions.h"
+#import "NSDate+AKTimeAdditions.h"
 
 #endif

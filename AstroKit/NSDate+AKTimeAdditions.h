@@ -58,6 +58,58 @@
 + (instancetype) dateWithJulianDayGeocentricCoordinateTime:(AKJulianDay)JD;
 
 /**
+ * Creates the date corresponding to the standard epoch B1900.0 in the
+ * Besselian system used before 1984.
+ * @return The data corresponding to the standard epoch B1900.0.
+ */
++ (instancetype) B1900;
+
+/**
+ * Creates the date corresponding to the standard epoch B1950.0 in the
+ * Besselian system used before 1984.
+ * @return The data corresponding to the standard epoch B1950.0.
+ */
++ (instancetype) B1950;
+
+/**
+ * Creates the date corresponding to the standard epoch J2000.0 in the
+ * Julian system used after 1984.
+ * @return The data corresponding to the standard epoch J2000.0.
+ */
++ (instancetype) J2000;
+
+/**
+ * Creates the date corresponding to the standard epoch J2050.0 in the
+ * Julian system used after 1984.
+ * @return The data corresponding to the standard epoch J2050.0.
+ */
++ (instancetype) J2050;
+
+/**
+ * Creates the date corresponding to the epoch expressed in the Julian
+ * Year system used after 1984.
+ * @param year The year number in the Julian Year system.
+ * @return The date according to the Julian Year.
+ */
++ (instancetype) dateWithJulianYear:(double)year;
+
+/**
+ * Creates the date corresponding to the epoch expressed in the Besselian
+ * Year system used before 1984.
+ * @param year The year number in the Besselian Year system.
+ * @return The date according to the Besselian Year.
+ */
++ (instancetype) dateWithBesselianYear:(double)year;
+
+/**
+ * Creates the date corresponding to the epoch.
+ * @param epoch The epoch.
+ * @return The date.
+ */
++ (instancetype) dateWithEpoch:(AKEpoch)epoch;
+
+
+/**
  * Creates and returns an NSDate object set to the date corresonding to
  * the number of seconds since 1 January 1970 00:00:00 UTC (Coordinated
  * Universal Time).
@@ -137,6 +189,31 @@
  * Julian Day.
  */
 - (instancetype) initWithJulianDayGeocentricCoordinateTime:(AKJulianDay)JD;
+
+/**
+ * Returns an <code>NSDate</code> object corresponding to the epoch 
+ * expressed in the Julian Year system used after 1984.
+ * @param year The year number in the Julian Year system.
+ * @return An NSDate object set to the date according to the Julian Year.
+ */
+- (instancetype) initWithJulianYear:(double)year;
+
+/**
+ * Returns an <code>NSDate</code> object corresponding to the epoch
+ * expressed in the Besselian Year system used before 1984.
+ * @param year The year number in the Besselian Year system.
+ * @return An NSDate object set to the date according to the Besselian
+ * Year.
+ */
+- (instancetype) initWithBesselianYear:(double)year;
+
+/**
+ * Returns an <code>NSDate</code> object corresponding to the
+ * specified epoch.
+ * @param epoch The epoch.
+ * @return An NSDate object set to the date.
+ */
+- (instancetype) initWithEpoch:(AKEpoch)epoch;
 
 /**
  * Returns an <code>NSDate</code> object set to the number of seconds
@@ -219,6 +296,28 @@
  * @return The Modified Julian Day.
  */
 - (AKModifiedJulianDay) modifiedJulianDay;
+
+/**
+ * Returns the Julian Year for this date.
+ * The Julian Year Epoch system was addopted by the IAU in 1984.
+ * @return The Julian Year.
+ */
+- (AKEpoch) julianYear;
+
+/**
+ * Returns the Besselian Year for this date.
+ * The Besselian Year Epoch system was used before 1984.
+ * @return The Besselian Year.
+ */
+- (AKEpoch) besselianYear;
+
+/**
+ * Returns the epoch for this date.
+ * If the date is before 1984, the Besselian Year epoch will be returned.
+ * If the date is in or after 1984, the Julian Year epoch will be returned.
+ * @return The epoch.
+ */
+- (AKEpoch) epoch;
 
 /**
  * Time interval since 1 January 1970 00:00:00 TAI (Coordinated

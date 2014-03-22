@@ -46,6 +46,19 @@
     NSTimeInterval tcg = AKTerrestrialTimeToGeocentricCoordinateTime(tt);
     NSTimeInterval tt2 = AKGeocentricCoordinateTimeToTerrestrialTime(tcg);
     XCTAssertEqual(tt, tt2, @"Conversion from TT to TCG and back.");
+    
+    NSDate *B1950 = [NSDate B1950];
+    XCTAssertEqual([B1950 julianDayTerrestrialTime], 2433282.4235, @"Testing the Julian date (TT) for B1950.0.");
+    NSDate *J2000 = [NSDate J2000];
+    XCTAssertEqual([J2000 julianDayTerrestrialTime], 2451545.00, @"Testing the Julian date (TT) for J2000.0.");
+    NSDate *B2000 = [NSDate dateWithBesselianYear:2000.];
+    XCTAssertNotEqual([J2000 julianDayTerrestrialTime], [B2000 julianDayTerrestrialTime], @"Testing (non) equality of B2000.0 and J2000.0.");
+    XCTAssertTrue([@"B2000.0" isEqualToString:AKStringFromEpoch([B2000 besselianYear])], @"Testing string representation for epoch B2000.0");
+    NSLog(@"Epoch for %@ is %@",date,AKStringFromEpoch([date epoch]));
+    date = [NSDate dateWithString:@"1983-12-31 00:00:00 +0000"];
+    NSLog(@"Epoch for %@ is %@",date,AKStringFromEpoch([date epoch]));
+    date = [NSDate dateWithString:@"1984-01-01 00:00:00 +0000"];
+    NSLog(@"Epoch for %@ is %@",date,AKStringFromEpoch([date epoch]));
 }
 
 - (void) testJulianDayConversion

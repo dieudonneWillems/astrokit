@@ -14,4 +14,6 @@
 #import "AKTimeFunctions.h"
 #import "NSDate+AKTimeAdditions.h"
 
+#import "AKCoordinateFunctions.h"
+
 #endif

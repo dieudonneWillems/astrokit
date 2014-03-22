@@ -24,7 +24,7 @@
 		026CFC0E18DB915500EEC3D2 /* AKLeapSeconds.h in Headers */ = {isa = PBXBuildFile; fileRef = 026CFC0C18DB915500EEC3D2 /* AKLeapSeconds.h */; };
 		026CFC0F18DB915500EEC3D2 /* AKLeapSeconds.m in Sources */ = {isa = PBXBuildFile; fileRef = 026CFC0D18DB915500EEC3D2 /* AKLeapSeconds.m */; };
 		026CFC1118DB93B200EEC3D2 /* leapSeconds.dat in Resources */ = {isa = PBXBuildFile; fileRef = 026CFC1018DB93B200EEC3D2 /* leapSeconds.dat */; };
-		026CFC1518DDB50200EEC3D2 /* AKCoordinateFunctions.h in Headers */ = {isa = PBXBuildFile; fileRef = 026CFC1318DDB50200EEC3D2 /* AKCoordinateFunctions.h */; };
+		026CFC1518DDB50200EEC3D2 /* AKCoordinateFunctions.h in Headers */ = {isa = PBXBuildFile; fileRef = 026CFC1318DDB50200EEC3D2 /* AKCoordinateFunctions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		026CFC1618DDB50200EEC3D2 /* AKCoordinateFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 026CFC1418DDB50200EEC3D2 /* AKCoordinateFunctions.m */; };
 /* End PBXBuildFile section */
 
@@ -206,9 +206,9 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				026CFC1518DDB50200EEC3D2 /* AKCoordinateFunctions.h in Headers */,
 				026CFC0718DA2BAD00EEC3D2 /* AstroKit.h in Headers */,
 				026CFC0518DA14E200EEC3D2 /* AKUtilFunctions.h in Headers */,
+				026CFC1518DDB50200EEC3D2 /* AKCoordinateFunctions.h in Headers */,
 				026CFC0A18DA484200EEC3D2 /* NSDate+AKTimeAdditions.h in Headers */,
 				026CFC0018DA13EE00EEC3D2 /* AKTimeFunctions.h in Headers */,
 				026CFC0E18DB915500EEC3D2 /* AKLeapSeconds.h in Headers */,

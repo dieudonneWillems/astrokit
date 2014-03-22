@@ -9,10 +9,18 @@
 #ifndef __ASTROKIT__COORDINATE_FUNCTIONS_
 #define __ASTROKIT__COORDINATE_FUNCTIONS_
 
+#import "AKTimeFunctions.h"
+
 typedef struct __sphericalposition {
     double longitude;
     double latitude;
     double distance;
 } AKPoint;
+
+typedef struct __celestialposition {
+    AKPoint point;
+    AKEpoch equinox;
+    AKEpoch epoch;
+} AKCelestialPoint;
 
 #endif

@@ -10,6 +10,7 @@
 #define __ASTROKIT__
 
 #import "AKUtilFunctions.h"
+#import "AKTypes.h"
 
 #import "AKTimeFunctions.h"
 #import "NSDate+AKTimeAdditions.h"

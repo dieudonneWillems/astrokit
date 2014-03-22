@@ -108,6 +108,16 @@
  */
 + (instancetype) dateWithEpoch:(AKEpoch)epoch;
 
+/**
+ * Creates the date corresponding to the specified number of Julian
+ * Centuries. The number of Julian Centuries is expected to be in UTC.
+ * The number of Julian Centuries is the number of centuries since
+ * J2000.0.
+ * @param T The number of Julian Centuries.
+ * @return The date.
+ */
++ (instancetype) dateWithJulianCenturies:(AKJulianCenturies)T;
+
 
 /**
  * Creates and returns an NSDate object set to the date corresonding to
@@ -216,6 +226,17 @@
 - (instancetype) initWithEpoch:(AKEpoch)epoch;
 
 /**
+ * Returns an <code>NSDate</code> object corresponding to the specified 
+ * number of Julian Centuries. The number of Julian Centuries is expected 
+ * to be in UTC.
+ * The number of Julian Centuries is the number of centuries since
+ * J2000.0.
+ * @param T The number of Julian Centuries.
+ * @return An NSDate object set to the date.
+ */
+- (instancetype) initWithJulianCenturies:(AKJulianCenturies)T;
+
+/**
  * Returns an <code>NSDate</code> object set to the number of seconds
  * in Coordinated Universal Time (UTC) corresponding to the given
  * number of seconds since 1 January 1970. This method is equivalent
@@ -318,6 +339,14 @@
  * @return The epoch.
  */
 - (AKEpoch) epoch;
+
+/**
+ * Returns the number of Julian Centuries for this date.
+ * The number of Julian Centuries is the number of centuries since
+ * J2000.0.
+ * @return The number of Julian Centuries.
+ */
+- (AKJulianCenturies) julianCenturies;
 
 /**
  * Time interval since 1 January 1970 00:00:00 TAI (Coordinated

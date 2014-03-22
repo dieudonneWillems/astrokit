@@ -113,6 +113,16 @@ NSTimeInterval AKDifferenceBetweenCoordiantedUniversalTimeAndAtomicTimeAtTimeInt
     return ls;
 }
 
+AKJulianCenturies AKJulianDayToJulianCenturies(AKJulianDay JD)
+{
+    return (JD-2451545.0)/36535;
+}
+
+AKJulianDay AKJulianCenturiesToJulianDay(AKJulianCenturies T)
+{
+    return (T*36535)+2451545.0;
+}
+
 
 
 NSString* AKStringFromEpoch(AKEpoch epoch)

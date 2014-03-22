@@ -77,6 +77,13 @@
     return [NSDate dateWithJulianDayTerrestrialTime:JDE];
 }
 
++ (instancetype) dateWithJulianCenturies:(AKJulianCenturies)T
+{
+    // TODO The JD should be in UT not in UTC?
+    AKJulianDay JD = AKJulianCenturiesToJulianDay(T);
+    return [NSDate dateWithJulianDay:JD];
+}
+
 + (instancetype) dateWithTimeIntervalSince1970CoordinatedUniversalTime:(NSTimeInterval)UTC
 {
     return [NSDate dateWithTimeIntervalSince1970:UTC];
@@ -157,6 +164,13 @@
     return [self initWithJulianDayTerrestrialTime:JDE];
 }
 
+- (instancetype) initWithJulianCenturies:(AKJulianCenturies)T
+{
+    // TODO The JD should be in UT not in UTC?
+    AKJulianDay JD = AKJulianCenturiesToJulianDay(T);
+    return [self initWithJulianDay:JD];
+}
+
 - (instancetype) initWithTimeIntervalSince1970CoordinatedUniversalTime:(NSTimeInterval)UTC
 {
     self = [self initWithTimeIntervalSince1970:UTC];
@@ -231,6 +245,13 @@
     NSTimeInterval ti = [self timeIntervalSince1970];
     if(ti<441763200) return [self besselianYear];
     return [self julianYear];
+}
+
+- (AKJulianCenturies) julianCenturies
+{
+    // TODO The JD should be in UT not in UTC?
+    AKJulianDay JD = [self julianDay];
+    return AKJulianDayToJulianCenturies(JD);
 }
 
 - (NSTimeInterval) timeIntervalSince1970CoordinatedUniversalTime

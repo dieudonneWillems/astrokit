@@ -14,6 +14,7 @@
 
 typedef double AKJulianDay;
 typedef double AKModifiedJulianDay;
+typedef double AKJulianCenturies;
 
 typedef enum {
     AKJulianEpochSystem,
@@ -147,6 +148,25 @@ AKJulianDay AKEpochToJulianDayTerrestrialTime(AKEpoch epoch);
  * @return The time difference TAI-UTC.
  */
 NSTimeInterval AKDifferenceBetweenCoordiantedUniversalTimeAndAtomicTimeAtTimeIntervalSince1970(NSTimeInterval time);
+
+/**
+ * Calculates the number of Julian Centuries for the specified Julian Day
+ * from J2000.0.
+ * This number is calculated by: T=(JD-2451545.0)/36535 and is used
+ * often in calculations.
+ * @param JD The Julian Day for which the Julian Centuries need to be
+ * calculated.
+ * @return The number of Julian Centuries.
+ */
+AKJulianCenturies AKJulianDayToJulianCenturies(AKJulianDay JD);
+
+/**
+ * Converts the number of Julian Centuries into the Julian Day number.
+ * @param T The number of Julian Centuries.
+ * @return The Julian Day number.
+ */
+AKJulianDay AKJulianCenturiesToJulianDay(AKJulianCenturies T);
+
 
 /**
  * Creates a string representation of the epoch.

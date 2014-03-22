@@ -35,6 +35,48 @@
     return [[NSDate alloc] initWithJulianDayGeocentricCoordinateTime:JD];
 }
 
++ (instancetype) B1900
+{
+    return [NSDate dateWithBesselianYear:1900];
+}
+
++ (instancetype) B1950
+{
+    return [NSDate dateWithBesselianYear:1950];
+}
+
++ (instancetype) J2000;
+{
+    return [NSDate dateWithJulianYear:2000];
+}
+
++ (instancetype) J2050
+{
+    return [NSDate dateWithJulianYear:2050];
+}
+
++ (instancetype) dateWithJulianYear:(double)year
+{
+    AKEpoch epoch;
+    epoch.system = AKJulianEpochSystem;
+    epoch.year = year;
+    return [self dateWithEpoch:epoch];
+}
+
++ (instancetype) dateWithBesselianYear:(double)year
+{
+    AKEpoch epoch;
+    epoch.system = AKBesselianEpochSystem;
+    epoch.year = year;
+    return [self dateWithEpoch:epoch];
+}
+
++ (instancetype) dateWithEpoch:(AKEpoch)epoch
+{
+    AKJulianDay JDE = AKEpochToJulianDayTerrestrialTime(epoch);
+    return [NSDate dateWithJulianDayTerrestrialTime:JDE];
+}
+
 + (instancetype) dateWithTimeIntervalSince1970CoordinatedUniversalTime:(NSTimeInterval)UTC
 {
     return [NSDate dateWithTimeIntervalSince1970:UTC];
@@ -93,6 +135,28 @@
     return self;
 }
 
+- (instancetype) initWithJulianYear:(double)year
+{
+    AKEpoch epoch;
+    epoch.system = AKJulianEpochSystem;
+    epoch.year = year;
+    return [self initWithEpoch:epoch];
+}
+
+- (instancetype) initWithBesselianYear:(double)year
+{
+    AKEpoch epoch;
+    epoch.system = AKBesselianEpochSystem;
+    epoch.year = year;
+    return [self initWithEpoch:epoch];
+}
+
+- (instancetype) initWithEpoch:(AKEpoch)epoch
+{
+    AKJulianDay JDE = AKEpochToJulianDayTerrestrialTime(epoch);
+    return [self initWithJulianDayTerrestrialTime:JDE];
+}
+
 - (instancetype) initWithTimeIntervalSince1970CoordinatedUniversalTime:(NSTimeInterval)UTC
 {
     self = [self initWithTimeIntervalSince1970:UTC];
@@ -148,6 +212,25 @@
 - (AKModifiedJulianDay) modifiedJulianDay
 {
     return AKTimeIntervalSince1970ToModifiedJulianDay([self timeIntervalSince1970]);
+}
+
+- (AKEpoch) julianYear
+{
+    AKJulianDay JDE = [self julianDayTerrestrialTime];
+    return AKJulianDayTerrestrialTimeToJulianYear(JDE);
+}
+
+- (AKEpoch) besselianYear
+{
+    AKJulianDay JDE = [self julianDayTerrestrialTime];
+    return AKJulianDayTerrestrialTimeToBesselianYear(JDE);
+}
+
+- (AKEpoch) epoch
+{
+    NSTimeInterval ti = [self timeIntervalSince1970];
+    if(ti<441763200) return [self besselianYear];
+    return [self julianYear];
 }
 
 - (NSTimeInterval) timeIntervalSince1970CoordinatedUniversalTime

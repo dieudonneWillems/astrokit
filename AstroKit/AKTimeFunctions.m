@@ -81,9 +81,44 @@ NSTimeInterval AKTerrestrialTimeToGeocentricCoordinateTime(NSTimeInterval TT)
     return TT+6.969291e-10*(JD -2443144.5)*86400.;
 }
 
+AKEpoch AKJulianDayTerrestrialTimeToJulianYear(AKJulianDay JD)
+{
+    AKEpoch epoch;
+    epoch.year = 2000.0+(JD-2451545.0)/365.25;
+    epoch.system = AKJulianEpochSystem;
+    return epoch;
+}
+
+AKEpoch AKJulianDayTerrestrialTimeToBesselianYear(AKJulianDay JD)
+{
+    AKEpoch epoch;
+    epoch.year = 1950.0+(JD-2433282.4235)/365.2421988;
+    epoch.system = AKBesselianEpochSystem;
+    return epoch;
+}
+
+AKJulianDay AKEpochToJulianDayTerrestrialTime(AKEpoch epoch)
+{
+    if(epoch.system==AKJulianEpochSystem)
+        return (epoch.year-2000.0)*365.25+2451545.0;
+    if(epoch.system==AKBesselianEpochSystem)
+        return (epoch.year-1950.0)*365.2421988+2433282.4235;
+    return NSNotFound;
+}
+
 NSTimeInterval AKDifferenceBetweenCoordiantedUniversalTimeAndAtomicTimeAtTimeIntervalSince1970(NSTimeInterval time)
 {
     AKJulianDay JD = AKTimeIntervalSince1970ToJulianDay(time);
     double ls = [AKLeapSeconds leapSecondsAtJulianDay:JD];
     return ls;
+}
+
+
+
+NSString* AKStringFromEpoch(AKEpoch epoch)
+{
+    NSString *system = @"U";
+    if(epoch.system==AKJulianEpochSystem) system=@"J";
+    else if(epoch.system==AKBesselianEpochSystem) system=@"B";
+    return [NSString stringWithFormat:@"%@%.1f",system,epoch.year];
 }

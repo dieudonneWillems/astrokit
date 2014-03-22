@@ -7,3 +7,12 @@
 //
 
 #import "AKTypes.h"
+
+AKGeographicalPoint AKMakeGeographicalPoint(double latitude, double longitude, double elevation)
+{
+    AKGeographicalPoint p;
+    p.latitude = latitude;
+    p.longitude = longitude;
+    p.elevation = elevation;
+    return p;
+}

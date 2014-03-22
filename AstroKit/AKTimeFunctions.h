@@ -15,6 +15,16 @@
 typedef double AKJulianDay;
 typedef double AKModifiedJulianDay;
 
+typedef enum {
+    AKJulianEpochSystem,
+    AKBesselianEpochSystem
+} AKEpochSystem;
+
+typedef struct __epoch {
+    double year;
+    AKEpochSystem system;
+} AKEpoch;
+
 /**
  * Converts a time interval since January 1, 1970 00:00 UT to its corresponding Julian Day.
  * @param time The time interval (in seconds) since 1 January 1970 0h UT.
@@ -101,6 +111,33 @@ NSTimeInterval AKGeocentricCoordinateTimeToTerrestrialTime(NSTimeInterval TCG);
  */
 NSTimeInterval AKTerrestrialTimeToGeocentricCoordinateTime(NSTimeInterval TT);
 
+/** 
+ * Calculates the Julian Year number (epoch) from the
+ * Terrestrial Time (TT) expressed in a Julian Day.
+ * The Julian Year is the system adopted by the IAU after 1984.
+ * Standard epochs include J2000.0 and J2050.0.
+ * @param JD The Julian Day in Terrestrial Time.
+ * @return The Julian Year.
+ */
+AKEpoch AKJulianDayTerrestrialTimeToJulianYear(AKJulianDay JD);
+
+/**
+ * Calculates the Besselian Year number (epoch) from the
+ * Terrestrial Time (TT) expressed in a Julian Day.
+ * The Besselian Year is the system was used before 1984. Standard
+ * epochs include B1900.0 and B1950.0.
+ * @param JD The Julian Day in Terrestrial Time.
+ * @return The Besselian Year.
+ */
+AKEpoch AKJulianDayTerrestrialTimeToBesselianYear(AKJulianDay JD);
+
+/**
+ * Calculates the terrestrial time (TT) as a Julian Day from the
+ * Besselian or Julian Year number.
+ * @param epoch The Besselian or Julian Year number.
+ * @return The terrestrial time as a Julian Day.
+ */
+AKJulianDay AKEpochToJulianDayTerrestrialTime(AKEpoch epoch);
 
 /**
  * Determines the time interval TAI-UTC between atomic time (TAI) and 
@@ -110,5 +147,12 @@ NSTimeInterval AKTerrestrialTimeToGeocentricCoordinateTime(NSTimeInterval TT);
  * @return The time difference TAI-UTC.
  */
 NSTimeInterval AKDifferenceBetweenCoordiantedUniversalTimeAndAtomicTimeAtTimeIntervalSince1970(NSTimeInterval time);
+
+/**
+ * Creates a string representation of the epoch.
+ * @param The epoch to be represented.
+ * @return A string representation of the epoch.
+ */
+NSString* AKStringFromEpoch(AKEpoch epoch);
 
 #endif

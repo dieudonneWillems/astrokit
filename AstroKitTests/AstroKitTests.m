@@ -27,6 +27,42 @@
     [super tearDown];
 }
 
+- (void) testNutation
+{
+    NSDate *date = [NSDate dateWithString:@"1987-04-10 00:00:00 +0000"];
+    AKJulianCenturies T = [date julianCenturies];
+    AKNutation nutation = AKCalculateNutation(T);
+    double rpi = 180./M_PI;
+    double lonas = nutation.longitude*rpi*3600;
+    double oblas = nutation.obliquity*rpi*3600;
+    NSLog(@"Nutation in longitude: %f\"",lonas);
+    NSLog(@"Nutation in obliquity: %f\"",oblas);
+    XCTAssertTrue(fabs(lonas+3.788)<0.001, @"Test nutation in longitude at 1987-04-10");
+    XCTAssertTrue(fabs(oblas-9.443)<0.001, @"Test nutation in longitude at 1987-04-10");
+}
+
+- (void) testSiderealTime
+{
+    AKGeographicalPoint USNO = AKMakeGeographicalPointInDegrees(38.9213888889, 77.0654166667, 5);
+    NSDate *date = [NSDate dateWithString:@"1987-04-10 00:00:00 +0000"];
+    AKJulianDay JD = [date julianDayCoordinatedUniversalTime];
+    double theta0 = AKMeanSiderealTimeAtGreenwichInDegrees(JD);
+    XCTAssertTrue(fabs(theta0-197.693195)<0.000001, @"Test mean sidereal time at Greenwich at 0h UT 10 April 1987   theta0=%f",theta0);
+    double theta = AKApparentSiderealTimeAtGreenwichInDegrees(JD);
+    NSLog(@"   Theta = %@",AKHMSStringFromAngleInDegrees(theta));
+    NSLog(@"   197.5008 = %@",AKHMSStringFromAngleInDegrees(197.5008));
+    XCTAssertTrue(fabs(theta-197.6922295833543537)<0.000001, @"Test mean sidereal time at Greenwich at 0h UT 10 April 1987   theta=%f",theta);
+    date = [NSDate dateWithString:@"1987-04-10 19:21:00 +0000"];
+    JD = [date julianDayCoordinatedUniversalTime];
+    theta0 = AKMeanSiderealTimeAtGreenwichInDegrees(JD);
+    XCTAssertTrue(fabs(theta0-128.7378734)<0.000001, @"Test mean sidereal time at Greenwich at 0h UT 10 April 1987");
+    theta = AKApparentSiderealTimeInDegrees(JD, USNO);
+    NSLog(@"   Theta = %@",AKHMSStringFromAngleInDegrees(theta));
+    NSLog(@"   51.6714708333 = %@",AKHMSStringFromAngleInDegrees(51.6714708333));
+    NSLog(@"   long = %@",AKHMSStringFromAngleInDegrees(77.0655555556));
+    XCTAssertTrue(fabs(theta-51.6714708333)<0.000001, @"Test apparent sidereal time at Greenwich at 19:21 UT 10 April 1987   theta=%f",theta);
+}
+
 - (void) testTimeConversions
 {
     NSDate *date = [NSDate dateWithString:@"2014-03-21 19:26:24 +0000"];

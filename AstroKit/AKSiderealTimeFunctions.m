@@ -9,7 +9,11 @@
 #import "AKSiderealTimeFunctions.h"
 
 
-double AKMeanSiderealTimeAtGreenwich(AKJulianCenturies T)
+AKAngle AKMeanSiderealTimeAtGreenwich(AKJulianDay JD)
 {
-    return 0;
+    AKJulianCenturies T = AKJulianDayToJulianCenturies(JD);
+    double indeg = 280.46061837 + 360.98564736629*(JD-2451545.0) + 0.000387933*T*T - T*T*T/38710000;
+    AKAngle theta = indeg/180*M_PI;
+    theta = AKNormalizeAngle(theta);
+    return theta;
 }

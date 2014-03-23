@@ -115,12 +115,12 @@ NSTimeInterval AKDifferenceBetweenCoordiantedUniversalTimeAndAtomicTimeAtTimeInt
 
 AKJulianCenturies AKJulianDayToJulianCenturies(AKJulianDay JD)
 {
-    return (JD-2451545.0)/36535;
+    return (JD-2451545.0)/36525;
 }
 
 AKJulianDay AKJulianCenturiesToJulianDay(AKJulianCenturies T)
 {
-    return (T*36535)+2451545.0;
+    return (T*36525)+2451545.0;
 }
 
 

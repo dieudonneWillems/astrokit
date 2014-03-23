@@ -16,3 +16,9 @@ AKGeographicalPoint AKMakeGeographicalPoint(double latitude, double longitude, d
     p.elevation = elevation;
     return p;
 }
+
+AKGeographicalPoint AKMakeGeographicalPointInDegrees(double latitude, double longitude, double elevation)
+{
+    double rpi = 180./M_PI;
+    return AKMakeGeographicalPoint(latitude/rpi, longitude/rpi, elevation);
+}

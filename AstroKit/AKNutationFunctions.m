@@ -8,6 +8,7 @@
 
 #import "AKNutationFunctions.h"
 #import "AKNutationTerms.h"
+#import "AKUtilFunctions.h"
 
 AKNutation AKCalculateNutation(AKJulianCenturies T)
 {
@@ -31,4 +32,34 @@ AKNutation AKCalculateNutation(AKJulianCenturies T)
     AKNutation nutation = [AKNutationTerms calculateNutationWithD:D M:M   Ma:Ma F:F Omega:Omega atJulianCenturies:T];
     
     return nutation;
+}
+
+AKAngle AKCalculateMeanObliquityOfTheEcliptic(AKJulianCenturies T)
+{
+    double U = T/100;
+    // in arcseconds
+    double eps0 = 84381.448 - 4680.93 *U
+                            -    1.55 *U*U
+                            + 1999.25 *U*U*U
+                            -   51.38 *U*U*U*U
+                            -  249.67 *U*U*U*U*U
+                            -   39.05 *U*U*U*U*U*U
+                            +    7.12 *U*U*U*U*U*U*U
+                            +   27.87 *U*U*U*U*U*U*U*U
+                            +    5.79 *U*U*U*U*U*U*U*U*U
+                            +    2.45 *U*U*U*U*U*U*U*U*U*U;
+    return eps0/3600/180*M_PI;
+}
+
+AKAngle AKCalculateTrueObliquityOfTheEcliptic(AKJulianCenturies T)
+{
+    AKNutation nutation = AKCalculateNutation(T);
+    return AKCalculateTrueObliquityOfTheEclipticWithNutation(T, nutation);
+}
+
+AKAngle AKCalculateTrueObliquityOfTheEclipticWithNutation(AKJulianCenturies T, AKNutation nutation)
+{
+    AKAngle eps0 = AKCalculateMeanObliquityOfTheEcliptic(T);
+    AKAngle eps = eps0+nutation.obliquity;
+    return eps;
 }

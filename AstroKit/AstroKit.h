@@ -13,8 +13,10 @@
 #import "AKTypes.h"
 
 #import "AKTimeFunctions.h"
+#import "AKSiderealTimeFunctions.h"
 #import "NSDate+AKTimeAdditions.h"
 
 #import "AKCoordinateFunctions.h"
+#import "AKNutationFunctions.h"
 
 #endif

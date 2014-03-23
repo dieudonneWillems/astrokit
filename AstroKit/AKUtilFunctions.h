@@ -65,4 +65,40 @@ AKAngle AKAngularDifference(AKAngle angle1, AKAngle angle2);
  */
 double AKAngularDifferenceInDegrees(double angle1, double angle2);
 
+/**
+ * Creates a string from the specified angle in the HMS format,
+ * used for right ascension.
+ * For instance 13h23m12s234.
+ * @param angle The angle in radians.
+ * @return The string representation of the angle.
+ */
+NSString* AKHMSStringFromAngle(AKAngle angle);
+
+/**
+ * Creates a string from the specified angle (in degrees) in 
+ * the HMS format, used for right ascension.
+ * For instance 13h23m12s234.
+ * @param angle The angle in degrees.
+ * @return The string representation of the angle.
+ */
+NSString* AKHMSStringFromAngleInDegrees(double angle);
+
+/**
+ * Creates a string from the specified angle in
+ * the DMS format, used for instance for declination.
+ * For instance -23°15'22"3.
+ * @param angle The angle in radians.
+ * @return The string representation of the angle.
+ */
+NSString* AKDMSStringFromAngle(AKAngle angle);
+
+/**
+ * Creates a string from the specified angle (in degrees) in
+ * the DMS format, used for instance for declination.
+ * For instance -23°15'22"3.
+ * @param angle The angle in degrees.
+ * @return The string representation of the angle.
+ */
+NSString* AKDMSStringFromAngleInDegrees(double angle);
+
 #endif

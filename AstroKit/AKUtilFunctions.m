@@ -53,3 +53,59 @@ double AKAngularDifferenceInDegrees(double angle1, double angle2)
     return dif;
 }
 
+
+NSString* AKHMSStringFromAngle(AKAngle angle)
+{
+    return AKHMSStringFromAngleInDegrees(angle*180/M_PI);
+}
+
+NSString* AKHMSStringFromAngleInDegrees(double angle)
+{
+    int h = (int)(angle/15.);
+    int m = (int)((angle/15.-(double)h)*60.);
+    double st =((angle/15.-(double)h)*60.-m)*60.;
+    int s = (int)st;
+    int sh = (int)((st-(double)s)*10000.+0.5);
+    NSMutableString *str = [NSMutableString string];
+    if(h<10) [str appendFormat:@" %dh",h];
+    else [str appendFormat:@"%dh",h];
+    if(m<10) [str appendFormat:@"0%dm",m];
+    else [str appendFormat:@"%dm",m];
+    if(s<10) [str appendFormat:@"0%ds",s];
+    else [str appendFormat:@"%ds",s];
+    if(sh<10) [str appendFormat:@"000%d",sh];
+    else if(sh<100) [str appendFormat:@"00%d",sh];
+    else if(sh<1000) [str appendFormat:@"0%d",sh];
+    else [str appendFormat:@"%d",sh];
+    return str;
+}
+
+NSString* AKDMSStringFromAngle(AKAngle angle)
+{
+    return AKDMSStringFromAngleInDegrees(angle*180/M_PI);
+}
+
+NSString* AKDMSStringFromAngleInDegrees(double angle)
+{
+    NSString *sign = @"+";
+    if(angle<0) {
+        sign = @"-";
+        angle = -angle;
+    }
+    int d = (int)(angle);
+    int m = (int)((angle-(double)d)*60.);
+    double st =((angle-(double)d)*60.-m)*60.;
+    int s = (int)st;
+    int sh = (int)((st-(double)s)*1000.+0.5);
+    NSMutableString *str = [NSMutableString string];
+    if(d<10) [str appendFormat:@" %@%d°",sign,d];
+    else [str appendFormat:@"%@%d°",sign,d];
+    if(m<10) [str appendFormat:@"0%d'",m];
+    else [str appendFormat:@"%d'",m];
+    if(s<10) [str appendFormat:@"0%d\"",s];
+    else [str appendFormat:@"%d\"",s];
+    if(sh<10) [str appendFormat:@"00%d",sh];
+    else if(sh<100) [str appendFormat:@"0%d",sh];
+    else [str appendFormat:@"%d",sh];
+    return str;
+}

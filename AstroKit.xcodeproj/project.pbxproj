@@ -24,6 +24,10 @@
 		026CFC0E18DB915500EEC3D2 /* AKLeapSeconds.h in Headers */ = {isa = PBXBuildFile; fileRef = 026CFC0C18DB915500EEC3D2 /* AKLeapSeconds.h */; };
 		026CFC0F18DB915500EEC3D2 /* AKLeapSeconds.m in Sources */ = {isa = PBXBuildFile; fileRef = 026CFC0D18DB915500EEC3D2 /* AKLeapSeconds.m */; };
 		026CFC1118DB93B200EEC3D2 /* leapSeconds.dat in Resources */ = {isa = PBXBuildFile; fileRef = 026CFC1018DB93B200EEC3D2 /* leapSeconds.dat */; };
+		026CFC1518DDB50200EEC3D2 /* AKCoordinateFunctions.h in Headers */ = {isa = PBXBuildFile; fileRef = 026CFC1318DDB50200EEC3D2 /* AKCoordinateFunctions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		026CFC1618DDB50200EEC3D2 /* AKCoordinateFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 026CFC1418DDB50200EEC3D2 /* AKCoordinateFunctions.m */; };
+		026CFC1918DDF0DD00EEC3D2 /* AKTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = 026CFC1718DDF0DD00EEC3D2 /* AKTypes.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		026CFC1A18DDF0DD00EEC3D2 /* AKTypes.m in Sources */ = {isa = PBXBuildFile; fileRef = 026CFC1818DDF0DD00EEC3D2 /* AKTypes.m */; };
 		026CFC1D18DEDDF800EEC3D2 /* AKSiderealTimeFunctions.h in Headers */ = {isa = PBXBuildFile; fileRef = 026CFC1B18DEDDF800EEC3D2 /* AKSiderealTimeFunctions.h */; };
 		026CFC1E18DEDDF800EEC3D2 /* AKSiderealTimeFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 026CFC1C18DEDDF800EEC3D2 /* AKSiderealTimeFunctions.m */; };
 /* End PBXBuildFile section */
@@ -62,8 +66,10 @@
 		026CFC0C18DB915500EEC3D2 /* AKLeapSeconds.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AKLeapSeconds.h; sourceTree = "<group>"; };
 		026CFC0D18DB915500EEC3D2 /* AKLeapSeconds.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AKLeapSeconds.m; sourceTree = "<group>"; };
 		026CFC1018DB93B200EEC3D2 /* leapSeconds.dat */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = leapSeconds.dat; sourceTree = "<group>"; };
-		026CFC1B18DEDDF800EEC3D2 /* AKSiderealTimeFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AKSiderealTimeFunctions.h; sourceTree = "<group>"; };
-		026CFC1C18DEDDF800EEC3D2 /* AKSiderealTimeFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AKSiderealTimeFunctions.m; sourceTree = "<group>"; };
+		026CFC1318DDB50200EEC3D2 /* AKCoordinateFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AKCoordinateFunctions.h; sourceTree = "<group>"; };
+		026CFC1418DDB50200EEC3D2 /* AKCoordinateFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AKCoordinateFunctions.m; sourceTree = "<group>"; };
+		026CFC1718DDF0DD00EEC3D2 /* AKTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AKTypes.h; sourceTree = "<group>"; };
+		026CFC1818DDF0DD00EEC3D2 /* AKTypes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AKTypes.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +137,7 @@
 			isa = PBXGroup;
 			children = (
 				026CFBDF18D99D6400EEC3D2 /* AstroKit.h */,
+				026CFC1218DDB43B00EEC3D2 /* Coordinates */,
 				026CFBFD18DA13B300EEC3D2 /* Time */,
 				026CFC0218DA14A700EEC3D2 /* Utils */,
 				026CFBD918D99D6400EEC3D2 /* Supporting Files */,
@@ -187,8 +194,19 @@
 			children = (
 				026CFC0318DA14E200EEC3D2 /* AKUtilFunctions.h */,
 				026CFC0418DA14E200EEC3D2 /* AKUtilFunctions.m */,
+				026CFC1718DDF0DD00EEC3D2 /* AKTypes.h */,
+				026CFC1818DDF0DD00EEC3D2 /* AKTypes.m */,
 			);
 			name = Utils;
+			sourceTree = "<group>";
+		};
+		026CFC1218DDB43B00EEC3D2 /* Coordinates */ = {
+			isa = PBXGroup;
+			children = (
+				026CFC1318DDB50200EEC3D2 /* AKCoordinateFunctions.h */,
+				026CFC1418DDB50200EEC3D2 /* AKCoordinateFunctions.m */,
+			);
+			name = Coordinates;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -200,7 +218,9 @@
 			files = (
 				026CFC1D18DEDDF800EEC3D2 /* AKSiderealTimeFunctions.h in Headers */,
 				026CFC0718DA2BAD00EEC3D2 /* AstroKit.h in Headers */,
+				026CFC1918DDF0DD00EEC3D2 /* AKTypes.h in Headers */,
 				026CFC0518DA14E200EEC3D2 /* AKUtilFunctions.h in Headers */,
+				026CFC1518DDB50200EEC3D2 /* AKCoordinateFunctions.h in Headers */,
 				026CFC0A18DA484200EEC3D2 /* NSDate+AKTimeAdditions.h in Headers */,
 				026CFC0018DA13EE00EEC3D2 /* AKTimeFunctions.h in Headers */,
 				026CFC0E18DB915500EEC3D2 /* AKLeapSeconds.h in Headers */,
@@ -304,10 +324,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				026CFC0118DA13EE00EEC3D2 /* AKTimeFunctions.m in Sources */,
-				026CFC1E18DEDDF800EEC3D2 /* AKSiderealTimeFunctions.m in Sources */,
+				026CFC1A18DDF0DD00EEC3D2 /* AKTypes.m in Sources */,
 				026CFC0618DA14E200EEC3D2 /* AKUtilFunctions.m in Sources */,
 				026CFC0B18DA484200EEC3D2 /* NSDate+AKTimeAdditions.m in Sources */,
 				026CFC0F18DB915500EEC3D2 /* AKLeapSeconds.m in Sources */,
+				026CFC1618DDB50200EEC3D2 /* AKCoordinateFunctions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,11 +9,20 @@
 #ifndef __ASTROKIT__COORDINATE_FUNCTIONS_
 #define __ASTROKIT__COORDINATE_FUNCTIONS_
 
-#import "AKTimeFunctions.h"
+#import "AKTypes.h"
+
+typedef enum {
+    AKEquatorialCoordinateSystem,
+    AKEclipticalCoordinateSystem,
+    AKLocalHorizontalCoordinateSystem,
+    AKLocalEquatorialCoordinateSystem,
+    AKGalacticCoordinateSystem,
+    AKExtraGalacticCoordinateSystem
+} AKCoordinateSystem;
 
 typedef struct __sphericalposition {
-    double longitude;
-    double latitude;
+    AKAngle longitude;
+    AKAngle latitude;
     double distance;
 } AKPoint;
 
@@ -21,6 +30,7 @@ typedef struct __celestialposition {
     AKPoint point;
     AKEpoch equinox;
     AKEpoch epoch;
+    AKCoordinateSystem system;
 } AKCelestialPoint;
 
 #endif

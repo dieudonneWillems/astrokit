@@ -30,7 +30,7 @@
 - (void) testNutation
 {
     NSDate *date = [NSDate dateWithString:@"1987-04-10 00:00:00 +0000"];
-    AKJulianCenturies T = [date julianCenturies];
+    AKJulianCenturies T = [date julianCenturiesTerrestrialTime];
     AKNutation nutation = AKCalculateNutation(T);
     double rpi = 180./M_PI;
     double lonas = nutation.longitude*rpi*3600;
@@ -95,6 +95,13 @@
     NSLog(@"Epoch for %@ is %@",date,AKStringFromEpoch([date epoch]));
     date = [NSDate dateWithString:@"1984-01-01 00:00:00 +0000"];
     NSLog(@"Epoch for %@ is %@",date,AKStringFromEpoch([date epoch]));
+    
+    date = [NSDate dateWithString:@"1978-06-01 00:00:00 +0000"];
+    NSTimeInterval deltaT = AKDifferenceBetweenTerrestrialTimeAndUniversalTimeAtJulianDay([date julianDay]);
+    XCTAssertEqual(deltaT, 49.0319, @"deltaT at 1978-06-01");
+    date = [NSDate dateWithString:@"2013-06-01 00:00:00 +0000"];
+    deltaT = AKDifferenceBetweenTerrestrialTimeAndUniversalTimeAtJulianDay([date julianDay]);
+    XCTAssertEqual(deltaT, 67.1100, @"deltaT at 2013-06-01");
 }
 
 - (void) testJulianDayConversion

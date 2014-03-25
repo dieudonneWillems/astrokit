@@ -27,6 +27,37 @@
     [super tearDown];
 }
 
+- (void) testDateFormatter
+{
+    NSDate *now = [NSDate date];
+    AKDateFormatter *format = [[AKDateFormatter alloc] init];
+    [format setTimeSystem:AKCoordinatedUniversalTime];
+    NSString *str = [format stringFromDate:now];
+    NSDate *ndate = [format dateFromString:str];
+    XCTAssertTrue(fabs([now timeIntervalSince1970]-[ndate timeIntervalSince1970])<0.001, @"Testing conversion from date in UTC to string and back.");
+    NSLog(@"UTC String from formatter: %@",str);
+    [format setTimeSystem:AKUniversalTime];
+    str = [format stringFromDate:now];
+    ndate = [format dateFromString:str];
+    XCTAssertTrue(fabs([now timeIntervalSince1970]-[ndate timeIntervalSince1970])<0.001, @"Testing conversion from date in UT1 to string and back.");
+    NSLog(@"UT1 String from formatter: %@",str);
+    [format setTimeSystem:AKTerrestrialTime];
+    str = [format stringFromDate:now];
+    ndate = [format dateFromString:str];
+    XCTAssertTrue(fabs([now timeIntervalSince1970]-[ndate timeIntervalSince1970])<0.001, @"Testing conversion from date in TT to string and back.");
+    NSLog(@"TT String from formatter: %@",str);
+    [format setTimeSystem:AKAtomicTime];
+    str = [format stringFromDate:now];
+    ndate = [format dateFromString:str];
+    XCTAssertTrue(fabs([now timeIntervalSince1970]-[ndate timeIntervalSince1970])<0.001, @"Testing conversion from date in TAI to string and back.");
+    NSLog(@"TAI String from formatter: %@",str);
+    [format setTimeSystem:AKGeocentricCoordinateTime];
+    str = [format stringFromDate:now];
+    ndate = [format dateFromString:str];
+    XCTAssertTrue(fabs([now timeIntervalSince1970]-[ndate timeIntervalSince1970])<0.001, @"Testing conversion from date in TCG to string and back.");
+    NSLog(@"TCG String from formatter: %@",str);
+}
+
 - (void) testNutation
 {
     NSDate *date = [NSDate dateWithString:@"1987-04-10 00:00:00 +0000"];

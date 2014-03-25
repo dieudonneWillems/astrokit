@@ -38,6 +38,8 @@
 		026CFC2F18E0C61500EEC3D2 /* AKDeltaT.h in Headers */ = {isa = PBXBuildFile; fileRef = 026CFC2D18E0C61500EEC3D2 /* AKDeltaT.h */; };
 		026CFC3018E0C61500EEC3D2 /* AKDeltaT.m in Sources */ = {isa = PBXBuildFile; fileRef = 026CFC2E18E0C61500EEC3D2 /* AKDeltaT.m */; };
 		026CFC3218E0C7E900EEC3D2 /* deltaT.dat in Resources */ = {isa = PBXBuildFile; fileRef = 026CFC3118E0C7E900EEC3D2 /* deltaT.dat */; };
+		026CFC3518E21D2500EEC3D2 /* AKDateFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = 026CFC3318E21D2500EEC3D2 /* AKDateFormatter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		026CFC3618E21D2500EEC3D2 /* AKDateFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 026CFC3418E21D2500EEC3D2 /* AKDateFormatter.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,6 +90,8 @@
 		026CFC2D18E0C61500EEC3D2 /* AKDeltaT.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AKDeltaT.h; sourceTree = "<group>"; };
 		026CFC2E18E0C61500EEC3D2 /* AKDeltaT.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AKDeltaT.m; sourceTree = "<group>"; };
 		026CFC3118E0C7E900EEC3D2 /* deltaT.dat */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = deltaT.dat; sourceTree = "<group>"; };
+		026CFC3318E21D2500EEC3D2 /* AKDateFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AKDateFormatter.h; sourceTree = "<group>"; };
+		026CFC3418E21D2500EEC3D2 /* AKDateFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AKDateFormatter.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -207,6 +211,8 @@
 				026CFC0D18DB915500EEC3D2 /* AKLeapSeconds.m */,
 				026CFC2D18E0C61500EEC3D2 /* AKDeltaT.h */,
 				026CFC2E18E0C61500EEC3D2 /* AKDeltaT.m */,
+				026CFC3318E21D2500EEC3D2 /* AKDateFormatter.h */,
+				026CFC3418E21D2500EEC3D2 /* AKDateFormatter.m */,
 			);
 			name = Time;
 			sourceTree = "<group>";
@@ -248,6 +254,7 @@
 				026CFC0518DA14E200EEC3D2 /* AKUtilFunctions.h in Headers */,
 				026CFC2118DEE6F200EEC3D2 /* AKSiderealTimeFunctions.h in Headers */,
 				026CFC2B18DF317500EEC3D2 /* AKNutationTerms.h in Headers */,
+				026CFC3518E21D2500EEC3D2 /* AKDateFormatter.h in Headers */,
 				026CFC1518DDB50200EEC3D2 /* AKCoordinateFunctions.h in Headers */,
 				026CFC0A18DA484200EEC3D2 /* NSDate+AKTimeAdditions.h in Headers */,
 				026CFC0018DA13EE00EEC3D2 /* AKTimeFunctions.h in Headers */,
@@ -354,6 +361,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				026CFC3618E21D2500EEC3D2 /* AKDateFormatter.m in Sources */,
 				026CFC0118DA13EE00EEC3D2 /* AKTimeFunctions.m in Sources */,
 				026CFC1A18DDF0DD00EEC3D2 /* AKTypes.m in Sources */,
 				026CFC2218DEE6F200EEC3D2 /* AKSiderealTimeFunctions.m in Sources */,

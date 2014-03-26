@@ -41,7 +41,6 @@ static NSInteger fileMonth;
     NSDateComponents *components = [[NSCalendar currentCalendar] components:NSCalendarUnitMonth | NSCalendarUnitYear fromDate:  [NSDate date]];
     NSInteger month = [components month];
     NSInteger year = [components year];
-    NSLog(@"month=%ld year=%ld",month,year);
     if(fileMonth>=0){
         if(year==fileYear){
             if(month<=6) needsUpdate = NO;
@@ -56,7 +55,6 @@ static NSInteger fileMonth;
     // Get path of file leapSeconds.dat in AstroKit.framework bundle.
     NSBundle *bundle = [NSBundle bundleForClass:[AKLeapSeconds class]];
     NSString *path = [bundle pathForResource:@"leapSeconds" ofType:@"dat"];
-    NSLog(@"leap Seconds path: %@",path);
     
     // Get contents of file
     NSError *error = nil;
@@ -132,7 +130,6 @@ static NSInteger fileMonth;
         for(AKLeapSeconds *ls in nar){
             [fstr appendFormat:@"%f\t%f\n",[ls MJD],[ls seconds]];
         }
-        NSLog(@"New file: \n%@",fstr);
         [fstr writeToFile:bfpath atomically:YES encoding:NSASCIIStringEncoding error:&error];
         fileYear = year;
         fileMonth = month;

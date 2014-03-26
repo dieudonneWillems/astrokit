@@ -20,7 +20,7 @@
 {
     self = [super init];
     if(self){
-        [self setDateFormat:@"yyyy-MM-dd HH:mm:ss.A T"];
+        [self setDateFormat:@"yyyy-MM-dd HH:mm:ss.SS T"];
     }
     return self;
 }
@@ -71,18 +71,27 @@
 - (NSDate *)dateFromString:(NSString *)string
 {
     NSString *tsstr = @"UTC";
-    if(self.timeSystem==AKCoordinatedUniversalTime){
-        tsstr = @"UTC";
-    }else if(self.timeSystem==AKUniversalTime){
-        tsstr = @"UT1";
-    }else if(self.timeSystem==AKAtomicTime){
-        tsstr = @"TAI";
-    }else if(self.timeSystem==AKTerrestrialTime){
-        tsstr = @"TT";
-    }else if(self.timeSystem==AKGeocentricCoordinateTime){
-        tsstr = @"TCG";
-    }
     NSRange rng = [string rangeOfString:tsstr options:NSBackwardsSearch];
+    NSUInteger i=0;
+    while(rng.location==NSNotFound){
+        if(i==0) tsstr=@"UT1";
+        else if(i==1) tsstr=@"TAI";
+        else if(i==2) tsstr=@"TT";
+        else if(i==3) tsstr=@"TCG";
+        rng = [string rangeOfString:tsstr options:NSBackwardsSearch];
+        i++;
+    }
+    if(i==0){
+        self.timeSystem=AKCoordinatedUniversalTime;
+    }else if(i==1){
+        self.timeSystem=AKUniversalTime;
+    }else if(i==2){
+        self.timeSystem=AKAtomicTime;
+    }else if(i==3){
+        self.timeSystem=AKTerrestrialTime;
+    }else if(i==4){
+        self.timeSystem=AKGeocentricCoordinateTime;
+    }
     NSString *nstr = [string copy];
     if(rng.location!=NSNotFound){
         nstr = [NSString stringWithFormat:@"%@*T%@",[nstr substringToIndex:rng.location],[nstr substringFromIndex:rng.location+rng.length]];

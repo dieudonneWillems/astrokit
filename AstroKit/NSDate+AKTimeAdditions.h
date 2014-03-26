@@ -9,8 +9,19 @@
 #import <Foundation/Foundation.h>
 
 #import "AKTimeFunctions.h"
+#import "AKDateFormatter.h"
 
 @interface NSDate (AKTimeAdditions)
+
+/**
+ * Creates a date from the specified string, which has to conform to the 
+ * format <code>yyyy-MM-dd HH:mm:ss.SS T</code> where <code>T</code> 
+ * specifies the time system used. Strings like 2014-03-24 19:28:38 UCT
+ * would be conform the expected format.
+ * @param datestring The string denoting the date.
+ * @return The date.
+ */
++ (instancetype) dateFromStringWithTimeSystem:(NSString*)datestring;
 
 /**
  * Creates and returns an NSDate object set to the date corresponding to
@@ -184,6 +195,17 @@
 + (instancetype) dateWithTimeIntervalSince1970GeocentricCoordinateTime:(NSTimeInterval)TCG;
 
 /**
+ * Returns an <code>NSDate</code> object set to the  date from the 
+ * specified string, which has to conform to the
+ * format <code>yyyy-MM-dd HH:mm:ss.A T</code> where <code>T</code>
+ * specifies the time system used. Strings like 2014-03-24 19:28:38 UCT
+ * would be conform the expected format.
+ * @param datestring The string denoting the date.
+ * @return The date.
+ */
+- (instancetype) initFromStringWithTimeSystem:(NSString*)datestring;
+
+/**
  * Returns an <code>NSDate</code> object set to the date corresponding to
  * the specified Julian Day.
  * @param JD The Julian Day
@@ -333,6 +355,13 @@
  * @return An <code>NSDate</code> object set to the specified time.
  */
 - (instancetype) initWithTimeIntervalSince1970GeocentricCoordinateTime:(NSTimeInterval)TCG;
+
+/** 
+ * Returns a string representation with the abbreviation for the
+ * time system of the receiver.
+ * @return The date as a string with the time system.
+ */
+- (NSString*) descriptionWithTimeSystem:(AKTimeSystem)system;
 
 /**
  * Calculates and returns the Julian Day (JD) in UTC corresponding to the

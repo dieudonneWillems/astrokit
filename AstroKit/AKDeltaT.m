@@ -30,7 +30,7 @@ static NSInteger __fileJD = 0;
     if(__fileJD+1<jd){
         [self updateDataFile];
     }
-    double prevdt = 42;
+    double prevdt = 42.;
     AKJulianDay prevJD = 2433282.4235;
     for(AKDeltaT *deltaT in __deltaTs){
         AKJulianDay fJD = [deltaT JD];
@@ -42,14 +42,13 @@ static NSInteger __fileJD = 0;
         prevdt = [deltaT deltaT];
         prevJD = [deltaT JD];
     }
-    return 42.;
+    return prevdt;
 }
 
 + (void) loadData
 {
     NSBundle *bundle = [NSBundle bundleForClass:[AKDeltaT class]];
     NSString *path = [bundle pathForResource:@"deltaT" ofType:@"dat"];
-    NSLog(@"deltaT path: %@",path);
     NSError *error;
     NSString *contents = [NSString stringWithContentsOfFile:path encoding:NSASCIIStringEncoding error:&error];
     __deltaTs = [NSMutableArray array];
@@ -122,7 +121,6 @@ static NSInteger __fileJD = 0;
         }
         NSBundle *bundle = [NSBundle bundleForClass:[AKDeltaT class]];
         NSString *path = [bundle pathForResource:@"deltaT" ofType:@"dat"];
-        NSLog(@"deltaT path: %@",path);
         [filestr writeToFile:path atomically:YES encoding:NSASCIIStringEncoding error:&error];
     }
     if(error){

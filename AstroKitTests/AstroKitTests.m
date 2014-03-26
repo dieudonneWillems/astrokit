@@ -34,28 +34,25 @@
     [format setTimeSystem:AKCoordinatedUniversalTime];
     NSString *str = [format stringFromDate:now];
     NSDate *ndate = [format dateFromString:str];
-    XCTAssertTrue(fabs([now timeIntervalSince1970]-[ndate timeIntervalSince1970])<0.001, @"Testing conversion from date in UTC to string and back.");
-    NSLog(@"UTC String from formatter: %@",str);
+    XCTAssertTrue(fabs([now timeIntervalSince1970]-[ndate timeIntervalSince1970])<0.01, @"Testing conversion from date in UTC to string and back. dt=%f",fabs([now timeIntervalSince1970]-[ndate timeIntervalSince1970]));
     [format setTimeSystem:AKUniversalTime];
     str = [format stringFromDate:now];
     ndate = [format dateFromString:str];
-    XCTAssertTrue(fabs([now timeIntervalSince1970]-[ndate timeIntervalSince1970])<0.001, @"Testing conversion from date in UT1 to string and back.");
-    NSLog(@"UT1 String from formatter: %@",str);
+    XCTAssertTrue(fabs([now timeIntervalSince1970]-[ndate timeIntervalSince1970])<0.01, @"Testing conversion from date in UT1 to string and back. dt=%f",fabs([now timeIntervalSince1970]-[ndate timeIntervalSince1970]));
     [format setTimeSystem:AKTerrestrialTime];
     str = [format stringFromDate:now];
     ndate = [format dateFromString:str];
-    XCTAssertTrue(fabs([now timeIntervalSince1970]-[ndate timeIntervalSince1970])<0.001, @"Testing conversion from date in TT to string and back.");
-    NSLog(@"TT String from formatter: %@",str);
+    XCTAssertTrue(fabs([now timeIntervalSince1970]-[ndate timeIntervalSince1970])<0.01, @"Testing conversion from date in TT to string and back. dt=%f",fabs([now timeIntervalSince1970]-[ndate timeIntervalSince1970]));
     [format setTimeSystem:AKAtomicTime];
     str = [format stringFromDate:now];
     ndate = [format dateFromString:str];
-    XCTAssertTrue(fabs([now timeIntervalSince1970]-[ndate timeIntervalSince1970])<0.001, @"Testing conversion from date in TAI to string and back.");
-    NSLog(@"TAI String from formatter: %@",str);
+    XCTAssertTrue(fabs([now timeIntervalSince1970]-[ndate timeIntervalSince1970])<0.01, @"Testing conversion from date in TAI to string and back. dt=%f",fabs([now timeIntervalSince1970]-[ndate timeIntervalSince1970]));
     [format setTimeSystem:AKGeocentricCoordinateTime];
     str = [format stringFromDate:now];
     ndate = [format dateFromString:str];
-    XCTAssertTrue(fabs([now timeIntervalSince1970]-[ndate timeIntervalSince1970])<0.001, @"Testing conversion from date in TCG to string and back.");
-    NSLog(@"TCG String from formatter: %@",str);
+    XCTAssertTrue(fabs([now timeIntervalSince1970]-[ndate timeIntervalSince1970])<0.01, @"Testing conversion from date in TCG to string and back. dt=%f",fabs([now timeIntervalSince1970]-[ndate timeIntervalSince1970]));
+    NSDate *sdate = [NSDate dateFromStringWithTimeSystem:str];
+    XCTAssertTrue(fabs([now timeIntervalSince1970]-[sdate timeIntervalSince1970])<0.01, @"Testing date init with string %@",[sdate descriptionWithTimeSystem:AKGeocentricCoordinateTime]);
 }
 
 - (void) testNutation
@@ -66,8 +63,6 @@
     double rpi = 180./M_PI;
     double lonas = nutation.longitude*rpi*3600;
     double oblas = nutation.obliquity*rpi*3600;
-    NSLog(@"Nutation in longitude: %f\"",lonas);
-    NSLog(@"Nutation in obliquity: %f\"",oblas);
     XCTAssertTrue(fabs(lonas+3.788)<0.001, @"Test nutation in longitude at 1987-04-10");
     XCTAssertTrue(fabs(oblas-9.443)<0.001, @"Test nutation in longitude at 1987-04-10");
 }
@@ -80,17 +75,12 @@
     double theta0 = AKMeanSiderealTimeAtGreenwichInDegrees(JD);
     XCTAssertTrue(fabs(theta0-197.693195)<0.000001, @"Test mean sidereal time at Greenwich at 0h UT 10 April 1987   theta0=%f",theta0);
     double theta = AKApparentSiderealTimeAtGreenwichInDegrees(JD);
-    NSLog(@"   Theta = %@",AKHMSStringFromAngleInDegrees(theta));
-    NSLog(@"   197.5008 = %@",AKHMSStringFromAngleInDegrees(197.5008));
     XCTAssertTrue(fabs(theta-197.6922295833543537)<0.000001, @"Test mean sidereal time at Greenwich at 0h UT 10 April 1987   theta=%f",theta);
     date = [NSDate dateWithString:@"1987-04-10 19:21:00 +0000"];
     JD = [date julianDayCoordinatedUniversalTime];
     theta0 = AKMeanSiderealTimeAtGreenwichInDegrees(JD);
     XCTAssertTrue(fabs(theta0-128.7378734)<0.000001, @"Test mean sidereal time at Greenwich at 0h UT 10 April 1987");
     theta = AKApparentSiderealTimeInDegrees(JD, USNO);
-    NSLog(@"   Theta = %@",AKHMSStringFromAngleInDegrees(theta));
-    NSLog(@"   51.6714708333 = %@",AKHMSStringFromAngleInDegrees(51.6714708333));
-    NSLog(@"   long = %@",AKHMSStringFromAngleInDegrees(77.0655555556));
     XCTAssertTrue(fabs(theta-51.6714708333)<0.000001, @"Test apparent sidereal time at Greenwich at 19:21 UT 10 April 1987   theta=%f",theta);
 }
 
@@ -99,9 +89,6 @@
     NSDate *date = [NSDate dateWithString:@"2014-03-21 19:26:24 +0000"];
     NSTimeInterval utc = [date timeIntervalSince1970];
     XCTAssertEqual(AKDifferenceBetweenCoordiantedUniversalTimeAndAtomicTimeAtTimeIntervalSince1970(utc), 35., @"TAI-UTC in March 2014");
-    NSTimeInterval tai = AKCoordinatedUniversalTimeToAtomicTime(utc);
-    NSDate *dateTAI = [NSDate dateWithTimeIntervalSince1970:tai];
-    NSLog(@"TAI: %@",dateTAI);
     date = [NSDate dateWithString:@"1976-03-21 19:26:24 +0000"];
     utc = [date timeIntervalSince1970];
     XCTAssertEqual(AKDifferenceBetweenCoordiantedUniversalTimeAndAtomicTimeAtTimeIntervalSince1970(utc), 16., @"TAI-UTC in March 2014");
@@ -121,11 +108,6 @@
     NSDate *B2000 = [NSDate dateWithBesselianYear:2000.];
     XCTAssertNotEqual([J2000 julianDayTerrestrialTime], [B2000 julianDayTerrestrialTime], @"Testing (non) equality of B2000.0 and J2000.0.");
     XCTAssertTrue([@"B2000.0" isEqualToString:AKStringFromEpoch([B2000 besselianYear])], @"Testing string representation for epoch B2000.0");
-    NSLog(@"Epoch for %@ is %@",date,AKStringFromEpoch([date epoch]));
-    date = [NSDate dateWithString:@"1983-12-31 00:00:00 +0000"];
-    NSLog(@"Epoch for %@ is %@",date,AKStringFromEpoch([date epoch]));
-    date = [NSDate dateWithString:@"1984-01-01 00:00:00 +0000"];
-    NSLog(@"Epoch for %@ is %@",date,AKStringFromEpoch([date epoch]));
     
     date = [NSDate dateWithString:@"1978-06-01 00:00:00 +0000"];
     NSTimeInterval deltaT = AKDifferenceBetweenTerrestrialTimeAndUniversalTimeAtJulianDay([date julianDay]);
@@ -145,7 +127,6 @@
     NSDate *date = [NSDate dateWithString:@"1957-10-04 19:26:24 +0000"];
     NSTimeInterval dti = [date timeIntervalSince1970];
     njd = AKTimeIntervalSince1970ToJulianDay(dti);
-    NSLog(@"Launch of Sputnik date = %@  ti=%f  JD=%f",date,dti,njd);
     XCTAssertEqual(njd, 2436116.31, @"Launch of Sputnik");
     NSTimeInterval nti = AKJulianDayToTimeIntervalSince1970(njd);
     XCTAssertTrue(fabs(dti-nti)<0.00001, @"Conversion back to time interval. diff = %f",dti-nti);

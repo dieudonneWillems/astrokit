@@ -71,7 +71,6 @@ static NSMutableArray *__terms;
                         ccount ++;
                     }
                 }
-              //  NSLog(@"cols: M:%d M':%d F:%d D:%d Omega:%d  l1:%f l2:%f  o1:%f o2:%f",_m,_ma,_f,_d,_omeg,_l1,_l2,_o1,_o2);
                 AKNutationTerms *term = [[AKNutationTerms alloc] initWithD:_d M:_m Ma:_ma F:_f Omega:_omeg longitude:_l1 secondOrderLongitude:_l2 obliquity:_o1 secondOrderObliquity:_o2];
                 [__terms addObject:term];
             }

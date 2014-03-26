@@ -8,7 +8,15 @@
 
 #import "NSDate+AKTimeAdditions.h"
 
+static AKDateFormatter *__formatter;
+
 @implementation NSDate (AKTimeAdditions)
+
++ (instancetype) dateFromStringWithTimeSystem:(NSString*)datestring
+{
+    if(!__formatter) __formatter = [[AKDateFormatter alloc] init];
+    return [__formatter dateFromString:datestring];
+}
 
 + (instancetype) dateWithJulianDay:(AKJulianDay)JD
 {
@@ -123,6 +131,13 @@
     return [NSDate dateWithTimeIntervalSince1970TerrestrialTime:TT];
 }
 
+- (instancetype) initFromStringWithTimeSystem:(NSString*)datestring
+{
+    if(!__formatter) __formatter = [[AKDateFormatter alloc] init];
+    self = [__formatter dateFromString:datestring];
+    return self;
+}
+
 - (instancetype) initWithJulianDay:(AKJulianDay)JD
 {
     NSTimeInterval ti = AKJulianDayToTimeIntervalSince1970(JD);
@@ -232,6 +247,13 @@
     NSTimeInterval TT = AKGeocentricCoordinateTimeToTerrestrialTime(TCG);
     self = [self initWithTimeIntervalSince1970TerrestrialTime:TT];
     return self;
+}
+
+- (NSString*) descriptionWithTimeSystem:(AKTimeSystem)system
+{
+    if(!__formatter) __formatter = [[AKDateFormatter alloc] init];
+    [__formatter setTimeSystem:system];
+    return [__formatter stringFromDate:self];
 }
 
 - (AKJulianDay) julianDay

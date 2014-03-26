@@ -27,7 +27,7 @@ typedef enum __time_system {
  * time systems other than local time systems and these are not supported
  * by <code>AKDateFormatter</code>. If time zones are needed use
  * <code>NSDateFormatter</code>.
- * The default format string is: <code>yyyy-MM-dd HH:mm:ss.A T</code>,
+ * The default format string is: <code>yyyy-MM-dd HH:mm:ss.SS T</code>,
  * where the format as defined in
  * <a href="http://www.unicode.org/reports/tr35/tr35-31/tr35-dates.html#Date_Format_Patterns">http://www.unicode.org/reports/tr35/tr35-31/tr35-dates.html#Date_Format_Patterns</a> is used with a new symbol 'T' added to designate the time system.
  * @return The date formatter.

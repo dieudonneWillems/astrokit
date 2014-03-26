@@ -9,8 +9,19 @@
 #import <Foundation/Foundation.h>
 
 #import "AKTimeFunctions.h"
+#import "AKDateFormatter.h"
 
 @interface NSDate (AKTimeAdditions)
+
+/**
+ * Creates a date from the specified string, which has to conform to the 
+ * format <code>yyyy-MM-dd HH:mm:ss.SS T</code> where <code>T</code> 
+ * specifies the time system used. Strings like 2014-03-24 19:28:38 UCT
+ * would be conform the expected format.
+ * @param datestring The string denoting the date.
+ * @return The date.
+ */
++ (instancetype) dateFromStringWithTimeSystem:(NSString*)datestring;
 
 /**
  * Creates and returns an NSDate object set to the date corresponding to
@@ -29,6 +40,15 @@
  * Day.
  */
 + (instancetype) dateWithJulianDayCoordinatedUniversalTime:(AKJulianDay)JD;
+
+/**
+ * Creates and returns an NSDate object set to the date corresponding to
+ * the specified Julian Day in Universal Time (UT1).
+ * @param JD The Julian Day.
+ * @return An NSDate object set to the date corresponding to the Julian
+ * Day.
+ */
++ (instancetype) dateWithJulianDayUniversalTime:(AKJulianDay)JD;
 
 /**
  * Creates and returns an NSDate object set to the date corresponding to
@@ -110,13 +130,23 @@
 
 /**
  * Creates the date corresponding to the specified number of Julian
- * Centuries. The number of Julian Centuries is expected to be in UTC.
+ * Centuries. The number of Julian Centuries is expected to be in UT1.
  * The number of Julian Centuries is the number of centuries since
  * J2000.0.
  * @param T The number of Julian Centuries.
  * @return The date.
  */
-+ (instancetype) dateWithJulianCenturies:(AKJulianCenturies)T;
++ (instancetype) dateWithJulianCenturiesUniversalTime:(AKJulianCenturies)T;
+
+/**
+ * Creates the date corresponding to the specified number of Julian
+ * Centuries. The number of Julian Centuries is expected to be in TT.
+ * The number of Julian Centuries is the number of centuries since
+ * J2000.0.
+ * @param T The number of Julian Centuries.
+ * @return The date.
+ */
++ (instancetype) dateWithJulianCenturiesTerrestrialTime:(AKJulianCenturies)T;
 
 
 /**
@@ -127,6 +157,15 @@
  * @return An NSDate object set to the corresponding date.
  */
 + (instancetype) dateWithTimeIntervalSince1970CoordinatedUniversalTime:(NSTimeInterval)UTC;
+
+/**
+ * Creates and returns an NSDate object set to the date corresonding to
+ * the number of seconds since 1 January 1970 00:00:00 UT1
+ * (Universal Time).
+ * @param UTC The number of seconds since 1970 in UT1.
+ * @return An NSDate object set to the corresponding date.
+ */
++ (instancetype) dateWithTimeIntervalSince1970UniversalTime:(NSTimeInterval)UT1;
 
 /**
  * Creates and returns an NSDate object set to the date corresonding to
@@ -156,6 +195,17 @@
 + (instancetype) dateWithTimeIntervalSince1970GeocentricCoordinateTime:(NSTimeInterval)TCG;
 
 /**
+ * Returns an <code>NSDate</code> object set to the  date from the 
+ * specified string, which has to conform to the
+ * format <code>yyyy-MM-dd HH:mm:ss.A T</code> where <code>T</code>
+ * specifies the time system used. Strings like 2014-03-24 19:28:38 UCT
+ * would be conform the expected format.
+ * @param datestring The string denoting the date.
+ * @return The date.
+ */
+- (instancetype) initFromStringWithTimeSystem:(NSString*)datestring;
+
+/**
  * Returns an <code>NSDate</code> object set to the date corresponding to
  * the specified Julian Day.
  * @param JD The Julian Day
@@ -171,7 +221,16 @@
  * @return An NSDate object set to the date corresponding to the specified
  * Julian Day.
  */
-- (instancetype) initWithJulianDayCoordinateUniversalTime:(AKJulianDay)JD;
+- (instancetype) initWithJulianDayCoordinatedUniversalTime:(AKJulianDay)JD;
+
+/**
+ * Returns an <code>NSDate</code> object set to the date corresponding to
+ * the specified Julian Day in Universal Time (UT1).
+ * @param JD The Julian Day
+ * @return An NSDate object set to the date corresponding to the specified
+ * Julian Day.
+ */
+- (instancetype) initWithJulianDayUniversalTime:(AKJulianDay)JD;
 
 /**
  * Returns an <code>NSDate</code> object set to the date corresponding to
@@ -228,13 +287,24 @@
 /**
  * Returns an <code>NSDate</code> object corresponding to the specified 
  * number of Julian Centuries. The number of Julian Centuries is expected 
- * to be in UTC.
+ * to be in UT1.
  * The number of Julian Centuries is the number of centuries since
  * J2000.0.
  * @param T The number of Julian Centuries.
  * @return An NSDate object set to the date.
  */
-- (instancetype) initWithJulianCenturies:(AKJulianCenturies)T;
+- (instancetype) initWithJulianCenturiesUniversalTime:(AKJulianCenturies)T;
+
+/**
+ * Returns an <code>NSDate</code> object corresponding to the specified
+ * number of Julian Centuries. The number of Julian Centuries is expected
+ * to be in TT.
+ * The number of Julian Centuries is the number of centuries since
+ * J2000.0.
+ * @param T The number of Julian Centuries.
+ * @return An NSDate object set to the date.
+ */
+- (instancetype) initWithJulianCenturiesTerrestrialTime:(AKJulianCenturies)T;
 
 /**
  * Returns an <code>NSDate</code> object set to the number of seconds
@@ -245,6 +315,16 @@
  * @return An <code>NSDate</code> object set to the specified time.
  */
 - (instancetype) initWithTimeIntervalSince1970CoordinatedUniversalTime:(NSTimeInterval)UTC;
+
+/**
+ * Returns an <code>NSDate</code> object set to the number of seconds
+ * in Coordinated Universal Time (UTC) corresponding to the given
+ * number of seconds since 1 January 1970 in Universal Time
+ * (UT1).
+ * @param UTC The number of seconds since 1970 in UT1.
+ * @return An <code>NSDate</code> object set to the specified time.
+ */
+- (instancetype) initWithTimeIntervalSince1970UniversalTime:(NSTimeInterval)UT1;
 
 /**
  * Returns an <code>NSDate</code> object set to the number of seconds
@@ -276,6 +356,13 @@
  */
 - (instancetype) initWithTimeIntervalSince1970GeocentricCoordinateTime:(NSTimeInterval)TCG;
 
+/** 
+ * Returns a string representation with the abbreviation for the
+ * time system of the receiver.
+ * @return The date as a string with the time system.
+ */
+- (NSString*) descriptionWithTimeSystem:(AKTimeSystem)system;
+
 /**
  * Calculates and returns the Julian Day (JD) in UTC corresponding to the
  * receiver.
@@ -289,6 +376,13 @@
  * @return The Julian Day.
  */
 - (AKJulianDay) julianDayCoordinatedUniversalTime;
+
+/**
+ * Calculates and returns the Julian Day (JD) in Universal Time
+ * (UT1) corresponding to the receiver.
+ * @return The Julian Day.
+ */
+- (AKJulianDay) julianDayUniversalTime;
 
 /**
  * Calculates and returns the Julian Day (JD) in International Atomic
@@ -341,19 +435,36 @@
 - (AKEpoch) epoch;
 
 /**
- * Returns the number of Julian Centuries for this date.
+ * Returns the number of Julian Centuries for this date in Universal Time
+ * (UT1).
  * The number of Julian Centuries is the number of centuries since
  * J2000.0.
  * @return The number of Julian Centuries.
  */
-- (AKJulianCenturies) julianCenturies;
+- (AKJulianCenturies) julianCenturiesUniversalTime;
 
 /**
- * Time interval since 1 January 1970 00:00:00 TAI (Coordinated
+ * Returns the number of Julian Centuries for this date in Terrestrial
+ * Time (TT).
+ * The number of Julian Centuries is the number of centuries since
+ * J2000.0.
+ * @return The number of Julian Centuries.
+ */
+- (AKJulianCenturies) julianCenturiesTerrestrialTime;
+
+/**
+ * Time interval since 1 January 1970 00:00:00 UCT (Coordinated
  * Universal Time).
- * @return The number of seconds in TAI.
+ * @return The number of seconds in UCT.
  */
 - (NSTimeInterval) timeIntervalSince1970CoordinatedUniversalTime;
+
+/**
+ * Time interval since 1 January 1970 00:00:00 UT1 (
+ * Universal Time).
+ * @return The number of seconds in UT1.
+ */
+- (NSTimeInterval) timeIntervalSince1970UniversalTime;
 
 /**
  * Time interval since 1 January 1970 00:00:00 TAI (International 

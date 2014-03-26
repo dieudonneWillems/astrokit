@@ -69,6 +69,20 @@ AKModifiedJulianDay AKJulianDayToModifiedJulianDay(AKJulianDay JD);
 AKJulianDay AKModifiedJulianDayToJulianDay(AKModifiedJulianDay MJD);
 
 /**
+ * Converts terrestrial (dynamic) time (TT or TDT) to universal time (UT1).
+ * @param TT The time interval since 1970 in terrestrial time.
+ * @return The time interval since 1970 in universal time (UT1).
+ */
+NSTimeInterval AKTerrestrialTimeToUniversalTime(NSTimeInterval TT);
+
+/**
+ * Converts universal time (UT1) to terrestrial (dynamic) time (TT or TDT).
+ * @param UT1 The time interval since 1970 in universal time (UT1).
+ * @return The time interval since 1970 in terrestrial time.
+ */
+NSTimeInterval AKUniversalTimeToTerrestrialTime(NSTimeInterval UT1);
+
+/**
  * Converts terrestrial (dynamic) time (TT or TDT) to atomic time (TAI).
  * @param TT The time interval since 1970 in terrestrial time.
  * @return The time interval since 1970 in atomic time (TAI).
@@ -148,6 +162,14 @@ AKJulianDay AKEpochToJulianDayTerrestrialTime(AKEpoch epoch);
  * @return The time difference TAI-UTC.
  */
 NSTimeInterval AKDifferenceBetweenCoordiantedUniversalTimeAndAtomicTimeAtTimeIntervalSince1970(NSTimeInterval time);
+
+/**
+ * Determines the differnece (TT-UT1) between terrestrial time (TT) and universal
+ * time (UT1) in number of seconds at the specified julian day.
+ * @param JD The Julian day.
+ * @return Then time difference TT-UT1 in seconds.
+ */
+NSTimeInterval AKDifferenceBetweenTerrestrialTimeAndUniversalTimeAtJulianDay(AKJulianDay JD);
 
 /**
  * Calculates the number of Julian Centuries for the specified Julian Day

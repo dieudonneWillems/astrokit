@@ -8,6 +8,7 @@
 
 #import "AKTimeFunctions.h"
 #import "AKLeapSeconds.h"
+#import "AKDeltaT.h"
 
 NSInteger const __NUMBER_OF_SECONDS_IN_A_DAY = 86400;
 
@@ -43,6 +44,20 @@ AKModifiedJulianDay AKJulianDayToModifiedJulianDay(AKJulianDay JD)
 AKJulianDay AKModifiedJulianDayToJulianDay(AKModifiedJulianDay MJD)
 {
     return MJD+2400000.5;
+}
+
+NSTimeInterval AKTerrestrialTimeToUniversalTime(NSTimeInterval TT)
+{
+    AKJulianDay JD = AKTimeIntervalSince1970ToJulianDay(TT);
+    NSTimeInterval dt = [AKDeltaT deltaTAtJulianDay:JD];
+    return TT-dt;
+}
+
+NSTimeInterval AKUniversalTimeToTerrestrialTime(NSTimeInterval UT1)
+{
+    AKJulianDay JD = AKTimeIntervalSince1970ToJulianDay(UT1);
+    NSTimeInterval dt = [AKDeltaT deltaTAtJulianDay:JD];
+    return UT1+dt;
 }
 
 NSTimeInterval AKTerrestrialTimeToAtomicTime(NSTimeInterval TT)
@@ -111,6 +126,12 @@ NSTimeInterval AKDifferenceBetweenCoordiantedUniversalTimeAndAtomicTimeAtTimeInt
     AKJulianDay JD = AKTimeIntervalSince1970ToJulianDay(time);
     double ls = [AKLeapSeconds leapSecondsAtJulianDay:JD];
     return ls;
+}
+
+NSTimeInterval AKDifferenceBetweenTerrestrialTimeAndUniversalTimeAtJulianDay(AKJulianDay JD)
+{
+    double deltaT = [AKDeltaT deltaTAtJulianDay:JD];
+    return deltaT;
 }
 
 AKJulianCenturies AKJulianDayToJulianCenturies(AKJulianDay JD)

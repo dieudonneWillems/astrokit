@@ -8,7 +8,15 @@
 
 #import "NSDate+AKTimeAdditions.h"
 
+static AKDateFormatter *__formatter;
+
 @implementation NSDate (AKTimeAdditions)
+
++ (instancetype) dateFromStringWithTimeSystem:(NSString*)datestring
+{
+    if(!__formatter) __formatter = [[AKDateFormatter alloc] init];
+    return [__formatter dateFromString:datestring];
+}
 
 + (instancetype) dateWithJulianDay:(AKJulianDay)JD
 {
@@ -17,7 +25,12 @@
 
 + (instancetype) dateWithJulianDayCoordinatedUniversalTime:(AKJulianDay)JD
 {
-    return [[NSDate alloc] initWithJulianDayCoordinateUniversalTime:JD];
+    return [[NSDate alloc] initWithJulianDayCoordinatedUniversalTime:JD];
+}
+
++ (instancetype) dateWithJulianDayUniversalTime:(AKJulianDay)JD
+{
+    return [[NSDate alloc] initWithJulianDayUniversalTime:JD];
 }
 
 + (instancetype) dateWithJulianDayAtomicTime:(AKJulianDay)JD
@@ -77,16 +90,27 @@
     return [NSDate dateWithJulianDayTerrestrialTime:JDE];
 }
 
-+ (instancetype) dateWithJulianCenturies:(AKJulianCenturies)T
++ (instancetype) dateWithJulianCenturiesUniversalTime:(AKJulianCenturies)T
 {
-    // TODO The JD should be in UT not in UTC?
     AKJulianDay JD = AKJulianCenturiesToJulianDay(T);
-    return [NSDate dateWithJulianDay:JD];
+    return [NSDate dateWithJulianDayUniversalTime:JD];
+}
+
++ (instancetype) dateWithJulianCenturiesTerrestrialTime:(AKJulianCenturies)T
+{
+    AKJulianDay JD = AKJulianCenturiesToJulianDay(T);
+    return [NSDate dateWithJulianDayTerrestrialTime:JD];
 }
 
 + (instancetype) dateWithTimeIntervalSince1970CoordinatedUniversalTime:(NSTimeInterval)UTC
 {
     return [NSDate dateWithTimeIntervalSince1970:UTC];
+}
+
++ (instancetype) dateWithTimeIntervalSince1970UniversalTime:(NSTimeInterval)UT1
+{
+    NSTimeInterval TT = AKUniversalTimeToTerrestrialTime(UT1);
+    return [self dateWithTimeIntervalSince1970TerrestrialTime:TT];
 }
 
 + (instancetype) dateWithTimeIntervalSince1970AtomicTime:(NSTimeInterval)TAI
@@ -107,6 +131,13 @@
     return [NSDate dateWithTimeIntervalSince1970TerrestrialTime:TT];
 }
 
+- (instancetype) initFromStringWithTimeSystem:(NSString*)datestring
+{
+    if(!__formatter) __formatter = [[AKDateFormatter alloc] init];
+    self = [__formatter dateFromString:datestring];
+    return self;
+}
+
 - (instancetype) initWithJulianDay:(AKJulianDay)JD
 {
     NSTimeInterval ti = AKJulianDayToTimeIntervalSince1970(JD);
@@ -114,10 +145,18 @@
     return self;
 }
 
-- (instancetype) initWithJulianDayCoordinateUniversalTime:(AKJulianDay)JD
+- (instancetype) initWithJulianDayCoordinatedUniversalTime:(AKJulianDay)JD
 {
     NSTimeInterval UTC = AKJulianDayToTimeIntervalSince1970(JD);
     self = [self initWithTimeIntervalSince1970CoordinatedUniversalTime:UTC];
+    return self;
+}
+
+- (instancetype) initWithJulianDayUniversalTime:(AKJulianDay)JD
+{
+    NSTimeInterval UT1 = AKJulianDayToTimeIntervalSince1970(JD);
+    NSTimeInterval TT = AKUniversalTimeToTerrestrialTime(UT1);
+    self = [self initWithTimeIntervalSince1970TerrestrialTime:TT];
     return self;
 }
 
@@ -164,16 +203,28 @@
     return [self initWithJulianDayTerrestrialTime:JDE];
 }
 
-- (instancetype) initWithJulianCenturies:(AKJulianCenturies)T
+- (instancetype) initWithJulianCenturiesUniversalTime:(AKJulianCenturies)T
 {
-    // TODO The JD should be in UT not in UTC?
     AKJulianDay JD = AKJulianCenturiesToJulianDay(T);
-    return [self initWithJulianDay:JD];
+    return [self initWithJulianDayUniversalTime:JD];
+}
+
+- (instancetype) initWithJulianCenturiesTerrestrialTime:(AKJulianCenturies)T
+{
+    AKJulianDay JD = AKJulianCenturiesToJulianDay(T);
+    return [self initWithJulianDayTerrestrialTime:JD];
 }
 
 - (instancetype) initWithTimeIntervalSince1970CoordinatedUniversalTime:(NSTimeInterval)UTC
 {
     self = [self initWithTimeIntervalSince1970:UTC];
+    return self;
+}
+
+- (instancetype) initWithTimeIntervalSince1970UniversalTime:(NSTimeInterval)UT1
+{
+    NSTimeInterval TT = AKUniversalTimeToTerrestrialTime(UT1);
+    self = [self initWithTimeIntervalSince1970TerrestrialTime:TT];
     return self;
 }
 
@@ -198,6 +249,13 @@
     return self;
 }
 
+- (NSString*) descriptionWithTimeSystem:(AKTimeSystem)system
+{
+    if(!__formatter) __formatter = [[AKDateFormatter alloc] init];
+    [__formatter setTimeSystem:system];
+    return [__formatter stringFromDate:self];
+}
+
 - (AKJulianDay) julianDay
 {
     return AKTimeIntervalSince1970ToJulianDay([self timeIntervalSince1970]);
@@ -206,6 +264,11 @@
 - (AKJulianDay) julianDayCoordinatedUniversalTime
 {
     return AKTimeIntervalSince1970ToJulianDay([self timeIntervalSince1970CoordinatedUniversalTime]);
+}
+
+- (AKJulianDay) julianDayUniversalTime
+{
+    return AKTimeIntervalSince1970ToJulianDay([self timeIntervalSince1970UniversalTime]);
 }
 
 - (AKJulianDay) julianDayAtomicTime
@@ -247,16 +310,27 @@
     return [self julianYear];
 }
 
-- (AKJulianCenturies) julianCenturies
+- (AKJulianCenturies) julianCenturiesUniversalTime
 {
-    // TODO The JD should be in UT not in UTC?
-    AKJulianDay JD = [self julianDay];
+    AKJulianDay JD = [self julianDayUniversalTime];
+    return AKJulianDayToJulianCenturies(JD);
+}
+
+- (AKJulianCenturies) julianCenturiesTerrestrialTime
+{
+    AKJulianDay JD = [self julianDayTerrestrialTime];
     return AKJulianDayToJulianCenturies(JD);
 }
 
 - (NSTimeInterval) timeIntervalSince1970CoordinatedUniversalTime
 {
     return [self timeIntervalSince1970];
+}
+
+- (NSTimeInterval) timeIntervalSince1970UniversalTime
+{
+    NSTimeInterval TT = [self timeIntervalSince1970TerrestrialTime];
+    return AKTerrestrialTimeToUniversalTime(TT);
 }
 
 - (NSTimeInterval) timeIntervalSince1970AtomicTime

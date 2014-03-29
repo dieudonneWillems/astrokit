@@ -9,7 +9,7 @@ Documentation is available via the [wiki](https://github.com/lapsedPacifist/astr
 
 ##Releases:
 
-###AstroKit Release 0.1 -- expected end of March 2014
+###AstroKit Release 0.1
 * Time functions
   * Conversions between time systems such as UTC, UT1, TT (TDT), TAI, and TCG.
   * Date formatting in strings with time systems.

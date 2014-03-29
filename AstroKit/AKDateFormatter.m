@@ -20,6 +20,7 @@
 {
     self = [super init];
     if(self){
+        [super setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"UTC"]];
         [self setDateFormat:@"yyyy-MM-dd HH:mm:ss.SS T"];
     }
     return self;

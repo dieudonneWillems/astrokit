@@ -161,7 +161,7 @@ AKJulianDay AKEpochToJulianDayTerrestrialTime(AKEpoch epoch);
  * @param time The timeinterval since 1970.
  * @return The time difference TAI-UTC.
  */
-NSTimeInterval AKDifferenceBetweenCoordiantedUniversalTimeAndAtomicTimeAtTimeIntervalSince1970(NSTimeInterval time);
+NSTimeInterval AKDifferenceBetweenCoordinatedUniversalTimeAndAtomicTimeAtTimeIntervalSince1970(NSTimeInterval time);
 
 /**
  * Determines the differnece (TT-UT1) between terrestrial time (TT) and universal

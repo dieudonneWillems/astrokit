@@ -72,14 +72,14 @@ NSTimeInterval AKAtomicTimeToTerrestrialTime(NSTimeInterval TAI)
 
 NSTimeInterval AKCoordinatedUniversalTimeToAtomicTime(NSTimeInterval UTC)
 {
-    NSTimeInterval ls = AKDifferenceBetweenCoordiantedUniversalTimeAndAtomicTimeAtTimeIntervalSince1970(UTC);
+    NSTimeInterval ls = AKDifferenceBetweenCoordinatedUniversalTimeAndAtomicTimeAtTimeIntervalSince1970(UTC);
     NSTimeInterval TAI = UTC+ls;
     return TAI;
 }
 
 NSTimeInterval AKAtomicTimeToCoordinatedUniversalTime(NSTimeInterval TAI)
 {
-    NSTimeInterval ls = AKDifferenceBetweenCoordiantedUniversalTimeAndAtomicTimeAtTimeIntervalSince1970(TAI);
+    NSTimeInterval ls = AKDifferenceBetweenCoordinatedUniversalTimeAndAtomicTimeAtTimeIntervalSince1970(TAI);
     NSTimeInterval UTC = TAI-ls;
     return UTC;
 }
@@ -121,7 +121,7 @@ AKJulianDay AKEpochToJulianDayTerrestrialTime(AKEpoch epoch)
     return NSNotFound;
 }
 
-NSTimeInterval AKDifferenceBetweenCoordiantedUniversalTimeAndAtomicTimeAtTimeIntervalSince1970(NSTimeInterval time)
+NSTimeInterval AKDifferenceBetweenCoordinatedUniversalTimeAndAtomicTimeAtTimeIntervalSince1970(NSTimeInterval time)
 {
     AKJulianDay JD = AKTimeIntervalSince1970ToJulianDay(time);
     double ls = [AKLeapSeconds leapSecondsAtJulianDay:JD];

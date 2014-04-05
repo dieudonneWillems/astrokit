@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>A00A861D-B0B2-44FD-8953-009F29F4BC69</string>
+	<key>IDESourceControlProjectName</key>
+	<string>AstroKit</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>DBB7CC9C-11A1-48B2-B125-34686A31691E</key>
+		<string>https://github.com/lapsedPacifist/astrokit.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>AstroKit.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>DBB7CC9C-11A1-48B2-B125-34686A31691E</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/lapsedPacifist/astrokit.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>DBB7CC9C-11A1-48B2-B125-34686A31691E</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>DBB7CC9C-11A1-48B2-B125-34686A31691E</string>
+			<key>IDESourceControlWCCName</key>
+			<string>AstroKit</string>
+		</dict>
+	</array>
+</dict>
+</plist>

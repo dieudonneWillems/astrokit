@@ -92,13 +92,13 @@
 {
     NSDate *date = [NSDate dateWithString:@"2014-03-21 19:26:24 +0000"];
     NSTimeInterval utc = [date timeIntervalSince1970];
-    XCTAssertEqual(AKDifferenceBetweenCoordiantedUniversalTimeAndAtomicTimeAtTimeIntervalSince1970(utc), 35., @"TAI-UTC in March 2014");
+    XCTAssertEqual(AKDifferenceBetweenCoordinatedUniversalTimeAndAtomicTimeAtTimeIntervalSince1970(utc), 35., @"TAI-UTC in March 2014");
     date = [NSDate dateWithString:@"1976-03-21 19:26:24 +0000"];
     utc = [date timeIntervalSince1970];
-    XCTAssertEqual(AKDifferenceBetweenCoordiantedUniversalTimeAndAtomicTimeAtTimeIntervalSince1970(utc), 16., @"TAI-UTC in March 2014");
+    XCTAssertEqual(AKDifferenceBetweenCoordinatedUniversalTimeAndAtomicTimeAtTimeIntervalSince1970(utc), 16., @"TAI-UTC in March 2014");
     date = [NSDate dateWithString:@"1982-11-21 19:26:24 +0000"];
     utc = [date timeIntervalSince1970];
-    XCTAssertEqual(AKDifferenceBetweenCoordiantedUniversalTimeAndAtomicTimeAtTimeIntervalSince1970(utc), 22., @"TAI-UTC in March 2014");
+    XCTAssertEqual(AKDifferenceBetweenCoordinatedUniversalTimeAndAtomicTimeAtTimeIntervalSince1970(utc), 22., @"TAI-UTC in March 2014");
     
     NSTimeInterval tt = [date timeIntervalSince1970TerrestrialTime];
     NSTimeInterval tcg = AKTerrestrialTimeToGeocentricCoordinateTime(tt);
